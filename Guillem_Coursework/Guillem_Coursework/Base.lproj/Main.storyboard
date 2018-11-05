@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1618" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,19 +30,19 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="layer-3 clouds.png" translatesAutoresizingMaskIntoConstraints="NO" id="HFO-g0-b92">
-                                <rect key="frame" x="0.0" y="0.0" width="858" height="466"/>
+                                <rect key="frame" x="0.0" y="0.0" width="2574" height="466"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="layer-5 mountains2.png" translatesAutoresizingMaskIntoConstraints="NO" id="oSx-9G-7Vx">
-                                <rect key="frame" x="-8" y="-7" width="682" height="387"/>
+                                <rect key="frame" x="-8" y="-7" width="2046" height="387"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="layer-4 mountains1.png" translatesAutoresizingMaskIntoConstraints="NO" id="fl1-kb-iAx">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <rect key="frame" x="0.0" y="0.0" width="2046" height="375"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="layer-6 road.png" translatesAutoresizingMaskIntoConstraints="NO" id="aYK-nr-zn6">
-                                <rect key="frame" x="0.0" y="0.0" width="674" height="380"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="layer-6 road.png" translatesAutoresizingMaskIntoConstraints="NO" id="2Iu-yP-9Qx">
+                                <rect key="frame" x="-8" y="-7" width="2700" height="387"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XN4-c1-16J">
@@ -56,7 +56,7 @@
                         <outlet property="bgClouds" destination="HFO-g0-b92" id="i5R-09-hJM"/>
                         <outlet property="bgMountains1" destination="oSx-9G-7Vx" id="ih8-Q2-7Fs"/>
                         <outlet property="bgMountains2" destination="fl1-kb-iAx" id="7P5-ff-tmS"/>
-                        <outlet property="bgRoad" destination="aYK-nr-zn6" id="Bnx-j9-u8R"/>
+                        <outlet property="bgRoad" destination="2Iu-yP-9Qx" id="MSU-C3-IJg"/>
                         <outlet property="bgSky" destination="ZJa-9s-8Jg" id="Wzo-fM-LTe"/>
                         <outlet property="bgSun" destination="hnf-Lt-Th6" id="ghU-C1-Y60"/>
                         <outlet property="bird" destination="XN4-c1-16J" id="Kcw-X5-bhD"/>
@@ -70,9 +70,9 @@
     <resources>
         <image name="layer-1 sky.png" width="3072" height="1536"/>
         <image name="layer-2 the sun.png" width="1245" height="1245"/>
-        <image name="layer-3 clouds.png" width="3072" height="1536"/>
-        <image name="layer-4 mountains1.png" width="3072" height="1536"/>
-        <image name="layer-5 mountains2.png" width="3072" height="1536"/>
-        <image name="layer-6 road.png" width="3072" height="1536"/>
+        <image name="layer-3 clouds.png" width="9216" height="1536"/>
+        <image name="layer-4 mountains1.png" width="9216" height="1536"/>
+        <image name="layer-5 mountains2.png" width="9186" height="1536"/>
+        <image name="layer-6 road.png" width="1" height="1"/>
     </resources>
 </document>

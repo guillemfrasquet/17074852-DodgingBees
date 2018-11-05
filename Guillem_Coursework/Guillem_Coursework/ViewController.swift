@@ -30,13 +30,13 @@ class ViewController: UIViewController {
         
         UIView.animate(withDuration: 3, delay: 0, options: [UIViewAnimationOptions.curveLinear, .repeat, .autoreverse],  animations:  {self.bgSun.alpha=0.8},completion:nil)
         
-        UIView.animate(withDuration: 50, animations: {self.bgClouds.center.x -= self.view.bounds.width})
+        UIView.animate(withDuration: 60, delay: 0, options: [.curveLinear, .repeat], animations: {self.bgClouds.center.x -= self.view.bounds.width})
         
-        UIView.animate(withDuration: 45, animations: {self.bgMountains1.center.x -= self.view.bounds.width})
+        UIView.animate(withDuration: 55, delay: 0, options: [.curveLinear, .repeat], animations: {self.bgMountains1.center.x -= self.view.bounds.width})
         
-        UIView.animate(withDuration: 30, animations: {self.bgMountains2.center.x -= self.view.bounds.width})
+        UIView.animate(withDuration: 45, delay: 0, options: [.curveLinear, .repeat], animations: {self.bgMountains2.center.x -= self.view.bounds.width})
         
-        UIView.animate(withDuration: 10, animations: {self.bgRoad.center.x -= self.view.bounds.width})
+        UIView.animate(withDuration: 15, delay: 0, options: [.curveLinear, .repeat], animations: {self.bgRoad.center.x -= self.view.bounds.width}, completion: nil)
         
         
         

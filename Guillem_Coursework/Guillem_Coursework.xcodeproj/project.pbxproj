@@ -563,6 +563,7 @@
 				C63B24C921904F7A00213258 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C63B24CA21904F7A00213258 /* Build configuration list for PBXNativeTarget "Guillem_CourseworkTests" */ = {
 			isa = XCConfigurationList;
@@ -571,6 +572,7 @@
 				C63B24CC21904F7A00213258 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C63B24CD21904F7A00213258 /* Build configuration list for PBXNativeTarget "Guillem_CourseworkUITests" */ = {
 			isa = XCConfigurationList;
@@ -579,6 +581,7 @@
 				C63B24CF21904F7A00213258 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
