@@ -8,7 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+
+protocol subviewDelegate {
+    func changeSomething()
+}
+
+
+class ViewController: UIViewController{
     
     
     @IBOutlet weak var bgSky: UIImageView!
