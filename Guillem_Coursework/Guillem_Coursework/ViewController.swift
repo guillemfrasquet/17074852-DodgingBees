@@ -17,7 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var bgMountains1: UIImageView!
     @IBOutlet weak var bgMountains2: UIImageView!
     @IBOutlet weak var bgRoad: UIImageView!
-
+    
+    @IBOutlet weak var bird: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,23 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 30, animations: {self.bgMountains2.center.x -= self.view.bounds.width})
         
         UIView.animate(withDuration: 10, animations: {self.bgRoad.center.x -= self.view.bounds.width})
+        
+        
+        
+        var birdArray: [UIImage]!
+        
+        birdArray = [UIImage(named: "frame-1.png")!,
+                     UIImage(named: "frame-2.png")!,
+                     UIImage(named: "frame-3.png")!,
+                     UIImage(named: "frame-4.png")!,
+                     UIImage(named: "frame-5.png")!,
+                     UIImage(named: "frame-6.png")!,
+                     UIImage(named: "frame-7.png")!,
+                     UIImage(named: "frame-8.png")!
+        ]
+        
+        bird.image = UIImage.animatedImage(with: birdArray,duration: 0.5)
+
     }
 
     override func didReceiveMemoryWarning() {

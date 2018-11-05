@@ -20,6 +20,14 @@
 		C63B24D92190534400213258 /* layer-4 mountains1.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24D82190534300213258 /* layer-4 mountains1.png */; };
 		C63B24DB219053CC00213258 /* layer-5 mountains2.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24DA219053CC00213258 /* layer-5 mountains2.png */; };
 		C63B24DD2190542700213258 /* layer-6 road.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24DC2190542700213258 /* layer-6 road.png */; };
+		C63B24F82190668D00213258 /* frame-1.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24F02190668D00213258 /* frame-1.png */; };
+		C63B24F92190668D00213258 /* frame-2.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24F12190668D00213258 /* frame-2.png */; };
+		C63B24FA2190668D00213258 /* frame-3.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24F22190668D00213258 /* frame-3.png */; };
+		C63B24FB2190668D00213258 /* frame-4.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24F32190668D00213258 /* frame-4.png */; };
+		C63B24FC2190668D00213258 /* frame-5.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24F42190668D00213258 /* frame-5.png */; };
+		C63B24FD2190668D00213258 /* frame-6.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24F52190668D00213258 /* frame-6.png */; };
+		C63B24FE2190668D00213258 /* frame-7.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24F62190668D00213258 /* frame-7.png */; };
+		C63B24FF2190668D00213258 /* frame-8.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24F72190668D00213258 /* frame-8.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +67,14 @@
 		C63B24D82190534300213258 /* layer-4 mountains1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "layer-4 mountains1.png"; path = "background/layer-4 mountains1.png"; sourceTree = "<group>"; };
 		C63B24DA219053CC00213258 /* layer-5 mountains2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "layer-5 mountains2.png"; path = "background/layer-5 mountains2.png"; sourceTree = "<group>"; };
 		C63B24DC2190542700213258 /* layer-6 road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "layer-6 road.png"; path = "background/layer-6 road.png"; sourceTree = "<group>"; };
+		C63B24F02190668D00213258 /* frame-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "frame-1.png"; path = "sprites/bird/frame-1.png"; sourceTree = "<group>"; };
+		C63B24F12190668D00213258 /* frame-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "frame-2.png"; path = "sprites/bird/frame-2.png"; sourceTree = "<group>"; };
+		C63B24F22190668D00213258 /* frame-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "frame-3.png"; path = "sprites/bird/frame-3.png"; sourceTree = "<group>"; };
+		C63B24F32190668D00213258 /* frame-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "frame-4.png"; path = "sprites/bird/frame-4.png"; sourceTree = "<group>"; };
+		C63B24F42190668D00213258 /* frame-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "frame-5.png"; path = "sprites/bird/frame-5.png"; sourceTree = "<group>"; };
+		C63B24F52190668D00213258 /* frame-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "frame-6.png"; path = "sprites/bird/frame-6.png"; sourceTree = "<group>"; };
+		C63B24F62190668D00213258 /* frame-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "frame-7.png"; path = "sprites/bird/frame-7.png"; sourceTree = "<group>"; };
+		C63B24F72190668D00213258 /* frame-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "frame-8.png"; path = "sprites/bird/frame-8.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +125,14 @@
 		C63B24A121904F7A00213258 /* Guillem_Coursework */ = {
 			isa = PBXGroup;
 			children = (
+				C63B24F02190668D00213258 /* frame-1.png */,
+				C63B24F12190668D00213258 /* frame-2.png */,
+				C63B24F22190668D00213258 /* frame-3.png */,
+				C63B24F32190668D00213258 /* frame-4.png */,
+				C63B24F42190668D00213258 /* frame-5.png */,
+				C63B24F52190668D00213258 /* frame-6.png */,
+				C63B24F62190668D00213258 /* frame-7.png */,
+				C63B24F72190668D00213258 /* frame-8.png */,
 				C63B24DC2190542700213258 /* layer-6 road.png */,
 				C63B24DA219053CC00213258 /* layer-5 mountains2.png */,
 				C63B24D82190534300213258 /* layer-4 mountains1.png */,
@@ -251,12 +275,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				C63B24DB219053CC00213258 /* layer-5 mountains2.png in Resources */,
+				C63B24FA2190668D00213258 /* frame-3.png in Resources */,
+				C63B24FB2190668D00213258 /* frame-4.png in Resources */,
 				C63B24AD21904F7A00213258 /* LaunchScreen.storyboard in Resources */,
 				C63B24AA21904F7A00213258 /* Assets.xcassets in Resources */,
 				C63B24D92190534400213258 /* layer-4 mountains1.png in Resources */,
 				C63B24D72190531200213258 /* layer-3 clouds.png in Resources */,
+				C63B24FC2190668D00213258 /* frame-5.png in Resources */,
+				C63B24FF2190668D00213258 /* frame-8.png in Resources */,
+				C63B24F92190668D00213258 /* frame-2.png in Resources */,
+				C63B24F82190668D00213258 /* frame-1.png in Resources */,
+				C63B24FD2190668D00213258 /* frame-6.png in Resources */,
 				C63B24D32190527200213258 /* layer-1 sky.png in Resources */,
 				C63B24D5219052DF00213258 /* layer-2 the sun.png in Resources */,
+				C63B24FE2190668D00213258 /* frame-7.png in Resources */,
 				C63B24A821904F7A00213258 /* Main.storyboard in Resources */,
 				C63B24DD2190542700213258 /* layer-6 road.png in Resources */,
 			);

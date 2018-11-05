@@ -45,6 +45,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="674" height="380"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XN4-c1-16J">
+                                <rect key="frame" x="20" y="163" width="66" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -55,6 +59,7 @@
                         <outlet property="bgRoad" destination="aYK-nr-zn6" id="Bnx-j9-u8R"/>
                         <outlet property="bgSky" destination="ZJa-9s-8Jg" id="Wzo-fM-LTe"/>
                         <outlet property="bgSun" destination="hnf-Lt-Th6" id="ghU-C1-Y60"/>
+                        <outlet property="bird" destination="XN4-c1-16J" id="Kcw-X5-bhD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
