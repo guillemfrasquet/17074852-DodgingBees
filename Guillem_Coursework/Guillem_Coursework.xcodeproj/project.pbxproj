@@ -1,0 +1,554 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C63B24A321904F7A00213258 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B24A221904F7A00213258 /* AppDelegate.swift */; };
+		C63B24A521904F7A00213258 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B24A421904F7A00213258 /* ViewController.swift */; };
+		C63B24A821904F7A00213258 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C63B24A621904F7A00213258 /* Main.storyboard */; };
+		C63B24AA21904F7A00213258 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63B24A921904F7A00213258 /* Assets.xcassets */; };
+		C63B24AD21904F7A00213258 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C63B24AB21904F7A00213258 /* LaunchScreen.storyboard */; };
+		C63B24B821904F7A00213258 /* Guillem_CourseworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B24B721904F7A00213258 /* Guillem_CourseworkTests.swift */; };
+		C63B24C321904F7A00213258 /* Guillem_CourseworkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B24C221904F7A00213258 /* Guillem_CourseworkUITests.swift */; };
+		C63B24D32190527200213258 /* layer-1 sky.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24D22190527200213258 /* layer-1 sky.png */; };
+		C63B24D5219052DF00213258 /* layer-2 the sun.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24D4219052DF00213258 /* layer-2 the sun.png */; };
+		C63B24D72190531200213258 /* layer-3 clouds.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24D62190531200213258 /* layer-3 clouds.png */; };
+		C63B24D92190534400213258 /* layer-4 mountains1.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24D82190534300213258 /* layer-4 mountains1.png */; };
+		C63B24DB219053CC00213258 /* layer-5 mountains2.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24DA219053CC00213258 /* layer-5 mountains2.png */; };
+		C63B24DD2190542700213258 /* layer-6 road.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24DC2190542700213258 /* layer-6 road.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C63B24B421904F7A00213258 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C63B249721904F7A00213258 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C63B249E21904F7A00213258;
+			remoteInfo = Guillem_Coursework;
+		};
+		C63B24BF21904F7A00213258 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C63B249721904F7A00213258 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C63B249E21904F7A00213258;
+			remoteInfo = Guillem_Coursework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C63B249F21904F7A00213258 /* Guillem_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guillem_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C63B24A221904F7A00213258 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C63B24A421904F7A00213258 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C63B24A721904F7A00213258 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C63B24A921904F7A00213258 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C63B24AC21904F7A00213258 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C63B24AE21904F7A00213258 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C63B24B321904F7A00213258 /* Guillem_CourseworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Guillem_CourseworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C63B24B721904F7A00213258 /* Guillem_CourseworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guillem_CourseworkTests.swift; sourceTree = "<group>"; };
+		C63B24B921904F7A00213258 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C63B24BE21904F7A00213258 /* Guillem_CourseworkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Guillem_CourseworkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C63B24C221904F7A00213258 /* Guillem_CourseworkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guillem_CourseworkUITests.swift; sourceTree = "<group>"; };
+		C63B24C421904F7A00213258 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C63B24D22190527200213258 /* layer-1 sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "layer-1 sky.png"; path = "background/layer-1 sky.png"; sourceTree = "<group>"; };
+		C63B24D4219052DF00213258 /* layer-2 the sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "layer-2 the sun.png"; path = "background/layer-2 the sun.png"; sourceTree = "<group>"; };
+		C63B24D62190531200213258 /* layer-3 clouds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "layer-3 clouds.png"; path = "background/layer-3 clouds.png"; sourceTree = "<group>"; };
+		C63B24D82190534300213258 /* layer-4 mountains1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "layer-4 mountains1.png"; path = "background/layer-4 mountains1.png"; sourceTree = "<group>"; };
+		C63B24DA219053CC00213258 /* layer-5 mountains2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "layer-5 mountains2.png"; path = "background/layer-5 mountains2.png"; sourceTree = "<group>"; };
+		C63B24DC2190542700213258 /* layer-6 road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "layer-6 road.png"; path = "background/layer-6 road.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C63B249C21904F7A00213258 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C63B24B021904F7A00213258 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C63B24BB21904F7A00213258 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C63B249621904F7A00213258 = {
+			isa = PBXGroup;
+			children = (
+				C63B24A121904F7A00213258 /* Guillem_Coursework */,
+				C63B24B621904F7A00213258 /* Guillem_CourseworkTests */,
+				C63B24C121904F7A00213258 /* Guillem_CourseworkUITests */,
+				C63B24A021904F7A00213258 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C63B24A021904F7A00213258 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C63B249F21904F7A00213258 /* Guillem_Coursework.app */,
+				C63B24B321904F7A00213258 /* Guillem_CourseworkTests.xctest */,
+				C63B24BE21904F7A00213258 /* Guillem_CourseworkUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C63B24A121904F7A00213258 /* Guillem_Coursework */ = {
+			isa = PBXGroup;
+			children = (
+				C63B24DC2190542700213258 /* layer-6 road.png */,
+				C63B24DA219053CC00213258 /* layer-5 mountains2.png */,
+				C63B24D82190534300213258 /* layer-4 mountains1.png */,
+				C63B24D62190531200213258 /* layer-3 clouds.png */,
+				C63B24D4219052DF00213258 /* layer-2 the sun.png */,
+				C63B24D22190527200213258 /* layer-1 sky.png */,
+				C63B24A221904F7A00213258 /* AppDelegate.swift */,
+				C63B24A421904F7A00213258 /* ViewController.swift */,
+				C63B24A621904F7A00213258 /* Main.storyboard */,
+				C63B24A921904F7A00213258 /* Assets.xcassets */,
+				C63B24AB21904F7A00213258 /* LaunchScreen.storyboard */,
+				C63B24AE21904F7A00213258 /* Info.plist */,
+			);
+			path = Guillem_Coursework;
+			sourceTree = "<group>";
+		};
+		C63B24B621904F7A00213258 /* Guillem_CourseworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				C63B24B721904F7A00213258 /* Guillem_CourseworkTests.swift */,
+				C63B24B921904F7A00213258 /* Info.plist */,
+			);
+			path = Guillem_CourseworkTests;
+			sourceTree = "<group>";
+		};
+		C63B24C121904F7A00213258 /* Guillem_CourseworkUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C63B24C221904F7A00213258 /* Guillem_CourseworkUITests.swift */,
+				C63B24C421904F7A00213258 /* Info.plist */,
+			);
+			path = Guillem_CourseworkUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C63B249E21904F7A00213258 /* Guillem_Coursework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C63B24C721904F7A00213258 /* Build configuration list for PBXNativeTarget "Guillem_Coursework" */;
+			buildPhases = (
+				C63B249B21904F7A00213258 /* Sources */,
+				C63B249C21904F7A00213258 /* Frameworks */,
+				C63B249D21904F7A00213258 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Guillem_Coursework;
+			productName = Guillem_Coursework;
+			productReference = C63B249F21904F7A00213258 /* Guillem_Coursework.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C63B24B221904F7A00213258 /* Guillem_CourseworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C63B24CA21904F7A00213258 /* Build configuration list for PBXNativeTarget "Guillem_CourseworkTests" */;
+			buildPhases = (
+				C63B24AF21904F7A00213258 /* Sources */,
+				C63B24B021904F7A00213258 /* Frameworks */,
+				C63B24B121904F7A00213258 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C63B24B521904F7A00213258 /* PBXTargetDependency */,
+			);
+			name = Guillem_CourseworkTests;
+			productName = Guillem_CourseworkTests;
+			productReference = C63B24B321904F7A00213258 /* Guillem_CourseworkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C63B24BD21904F7A00213258 /* Guillem_CourseworkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C63B24CD21904F7A00213258 /* Build configuration list for PBXNativeTarget "Guillem_CourseworkUITests" */;
+			buildPhases = (
+				C63B24BA21904F7A00213258 /* Sources */,
+				C63B24BB21904F7A00213258 /* Frameworks */,
+				C63B24BC21904F7A00213258 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C63B24C021904F7A00213258 /* PBXTargetDependency */,
+			);
+			name = Guillem_CourseworkUITests;
+			productName = Guillem_CourseworkUITests;
+			productReference = C63B24BE21904F7A00213258 /* Guillem_CourseworkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C63B249721904F7A00213258 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Guillem Frasquet";
+				TargetAttributes = {
+					C63B249E21904F7A00213258 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					C63B24B221904F7A00213258 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C63B249E21904F7A00213258;
+					};
+					C63B24BD21904F7A00213258 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C63B249E21904F7A00213258;
+					};
+				};
+			};
+			buildConfigurationList = C63B249A21904F7A00213258 /* Build configuration list for PBXProject "Guillem_Coursework" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C63B249621904F7A00213258;
+			productRefGroup = C63B24A021904F7A00213258 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C63B249E21904F7A00213258 /* Guillem_Coursework */,
+				C63B24B221904F7A00213258 /* Guillem_CourseworkTests */,
+				C63B24BD21904F7A00213258 /* Guillem_CourseworkUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C63B249D21904F7A00213258 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C63B24DB219053CC00213258 /* layer-5 mountains2.png in Resources */,
+				C63B24AD21904F7A00213258 /* LaunchScreen.storyboard in Resources */,
+				C63B24AA21904F7A00213258 /* Assets.xcassets in Resources */,
+				C63B24D92190534400213258 /* layer-4 mountains1.png in Resources */,
+				C63B24D72190531200213258 /* layer-3 clouds.png in Resources */,
+				C63B24D32190527200213258 /* layer-1 sky.png in Resources */,
+				C63B24D5219052DF00213258 /* layer-2 the sun.png in Resources */,
+				C63B24A821904F7A00213258 /* Main.storyboard in Resources */,
+				C63B24DD2190542700213258 /* layer-6 road.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C63B24B121904F7A00213258 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C63B24BC21904F7A00213258 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C63B249B21904F7A00213258 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C63B24A521904F7A00213258 /* ViewController.swift in Sources */,
+				C63B24A321904F7A00213258 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C63B24AF21904F7A00213258 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C63B24B821904F7A00213258 /* Guillem_CourseworkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C63B24BA21904F7A00213258 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C63B24C321904F7A00213258 /* Guillem_CourseworkUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C63B24B521904F7A00213258 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C63B249E21904F7A00213258 /* Guillem_Coursework */;
+			targetProxy = C63B24B421904F7A00213258 /* PBXContainerItemProxy */;
+		};
+		C63B24C021904F7A00213258 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C63B249E21904F7A00213258 /* Guillem_Coursework */;
+			targetProxy = C63B24BF21904F7A00213258 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C63B24A621904F7A00213258 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C63B24A721904F7A00213258 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C63B24AB21904F7A00213258 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C63B24AC21904F7A00213258 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C63B24C521904F7A00213258 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C63B24C621904F7A00213258 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C63B24C821904F7A00213258 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Guillem_Coursework/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "gf18aak.Guillem-Coursework";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		C63B24C921904F7A00213258 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Guillem_Coursework/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "gf18aak.Guillem-Coursework";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		C63B24CB21904F7A00213258 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = Guillem_CourseworkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "gf18aak.Guillem-CourseworkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Guillem_Coursework.app/Guillem_Coursework";
+			};
+			name = Debug;
+		};
+		C63B24CC21904F7A00213258 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = Guillem_CourseworkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "gf18aak.Guillem-CourseworkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Guillem_Coursework.app/Guillem_Coursework";
+			};
+			name = Release;
+		};
+		C63B24CE21904F7A00213258 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = Guillem_CourseworkUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "gf18aak.Guillem-CourseworkUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Guillem_Coursework;
+			};
+			name = Debug;
+		};
+		C63B24CF21904F7A00213258 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = Guillem_CourseworkUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "gf18aak.Guillem-CourseworkUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Guillem_Coursework;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C63B249A21904F7A00213258 /* Build configuration list for PBXProject "Guillem_Coursework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C63B24C521904F7A00213258 /* Debug */,
+				C63B24C621904F7A00213258 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C63B24C721904F7A00213258 /* Build configuration list for PBXNativeTarget "Guillem_Coursework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C63B24C821904F7A00213258 /* Debug */,
+				C63B24C921904F7A00213258 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C63B24CA21904F7A00213258 /* Build configuration list for PBXNativeTarget "Guillem_CourseworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C63B24CB21904F7A00213258 /* Debug */,
+				C63B24CC21904F7A00213258 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C63B24CD21904F7A00213258 /* Build configuration list for PBXNativeTarget "Guillem_CourseworkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C63B24CE21904F7A00213258 /* Debug */,
+				C63B24CF21904F7A00213258 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C63B249721904F7A00213258 /* Project object */;
+}

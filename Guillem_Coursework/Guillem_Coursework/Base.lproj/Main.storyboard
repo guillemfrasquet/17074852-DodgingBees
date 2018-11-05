@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1618" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Guillem_Coursework" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="layer-1 sky.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZJa-9s-8Jg">
+                                <rect key="frame" x="-8" y="-7" width="691" height="560"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="layer-2 the sun.png" translatesAutoresizingMaskIntoConstraints="NO" id="hnf-Lt-Th6">
+                                <rect key="frame" x="354" y="13" width="346" height="362"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="layer-3 clouds.png" translatesAutoresizingMaskIntoConstraints="NO" id="HFO-g0-b92">
+                                <rect key="frame" x="0.0" y="0.0" width="858" height="466"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="layer-5 mountains2.png" translatesAutoresizingMaskIntoConstraints="NO" id="oSx-9G-7Vx">
+                                <rect key="frame" x="-8" y="-7" width="682" height="387"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="layer-4 mountains1.png" translatesAutoresizingMaskIntoConstraints="NO" id="fl1-kb-iAx">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="layer-6 road.png" translatesAutoresizingMaskIntoConstraints="NO" id="aYK-nr-zn6">
+                                <rect key="frame" x="0.0" y="0.0" width="674" height="380"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="bgClouds" destination="HFO-g0-b92" id="i5R-09-hJM"/>
+                        <outlet property="bgMountains1" destination="oSx-9G-7Vx" id="ih8-Q2-7Fs"/>
+                        <outlet property="bgMountains2" destination="fl1-kb-iAx" id="7P5-ff-tmS"/>
+                        <outlet property="bgRoad" destination="aYK-nr-zn6" id="Bnx-j9-u8R"/>
+                        <outlet property="bgSky" destination="ZJa-9s-8Jg" id="Wzo-fM-LTe"/>
+                        <outlet property="bgSun" destination="hnf-Lt-Th6" id="ghU-C1-Y60"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="25.637181409295355" y="36"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="layer-1 sky.png" width="3072" height="1536"/>
+        <image name="layer-2 the sun.png" width="1245" height="1245"/>
+        <image name="layer-3 clouds.png" width="3072" height="1536"/>
+        <image name="layer-4 mountains1.png" width="3072" height="1536"/>
+        <image name="layer-5 mountains2.png" width="3072" height="1536"/>
+        <image name="layer-6 road.png" width="3072" height="1536"/>
+    </resources>
+</document>
