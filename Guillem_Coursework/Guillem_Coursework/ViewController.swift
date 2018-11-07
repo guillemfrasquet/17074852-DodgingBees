@@ -25,6 +25,7 @@ class ViewController: UIViewController{
     @IBOutlet weak var bgRoad: UIImageView!
     
     @IBOutlet weak var bird: UIImageView!
+    @IBOutlet weak var bee: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,35 @@ class ViewController: UIViewController{
         
         bird.image = UIImage.animatedImage(with: birdArray,duration: 0.5)
 
+        
+        //Create a new UIImageView from scratch
+        var beeView = UIImageView(image: nil)
+        
+        //Assign an array of images to the image view
+        var beeArray: [UIImage]!
+        
+        beeArray = [UIImage(named: "bee1.png")!,
+                    UIImage(named: "bee2.png")!,
+                    UIImage(named: "bee3.png")!,
+                    UIImage(named: "bee4.png")!,
+                    UIImage(named: "bee5.png")!,
+                    UIImage(named: "bee6.png")!
+        ]
+        
+        beeView.image = UIImage.animatedImage(with: beeArray,duration: 0.5)
+        //beeView.image = UIImage(named: "bee1.png")
+        
+        //Assign the size and position of the image view
+        let screenSize = UIScreen.main.bounds
+        //var xpos = Int.random(in: 10...screenSize.width);
+        //var ypos = 100;
+        
+        beeView.frame = CGRect(x:screenSize.width-100, y: 100, width: 60, height: 50)
+        //Add the image view to the main view
+        self.view.addSubview(beeView)
+        
+        
+        /* */
     }
 
     override func didReceiveMemoryWarning() {
