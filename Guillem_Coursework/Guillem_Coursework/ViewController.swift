@@ -62,32 +62,45 @@ class ViewController: UIViewController{
         bird.image = UIImage.animatedImage(with: birdArray,duration: 0.5)
 
         
-        //Create a new UIImageView from scratch
-        var beeView = UIImageView(image: nil)
-        
-        //Assign an array of images to the image view
-        var beeArray: [UIImage]!
-        
-        beeArray = [UIImage(named: "bee1.png")!,
-                    UIImage(named: "bee2.png")!,
-                    UIImage(named: "bee3.png")!,
-                    UIImage(named: "bee4.png")!,
-                    UIImage(named: "bee5.png")!,
-                    UIImage(named: "bee6.png")!
-        ]
-        
-        beeView.image = UIImage.animatedImage(with: beeArray,duration: 0.5)
-        //beeView.image = UIImage(named: "bee1.png")
-        
-        //Assign the size and position of the image view
-        let screenSize = UIScreen.main.bounds
-        //var xpos = Int.random(in: 10...screenSize.width);
-        //var ypos = 100;
-        
-        beeView.frame = CGRect(x:screenSize.width-100, y: 100, width: 60, height: 50)
-        //Add the image view to the main view
-        self.view.addSubview(beeView)
-        
+        for i in 1...10{
+            var secs = Int(arc4random_uniform(20))
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(secs)) {
+                // Your code for actions when the time is up}
+                //Create a new UIImageView from scratch
+                var beeView = UIImageView(image: nil)
+                
+                //Assign an array of images to the image view
+                var beeArray: [UIImage]!
+                
+                beeArray = [UIImage(named: "bee1.png")!,
+                            UIImage(named: "bee2.png")!,
+                            UIImage(named: "bee3.png")!,
+                            UIImage(named: "bee4.png")!,
+                            UIImage(named: "bee5.png")!,
+                            UIImage(named: "bee6.png")!
+                ]
+                
+                beeView.image = UIImage.animatedImage(with: beeArray,duration: 0.5)
+                //beeView.image = UIImage(named: "bee1.png")
+                
+                //Assign the size and position of the image view
+                let screenSize = UIScreen.main.bounds
+                var xpos = screenSize.width;
+                var ypos = arc4random_uniform(UInt32(screenSize.height - 50));
+                    //Int.random(in: 10...screenSize.height);
+                
+                beeView.frame = CGRect(x:xpos, y: CGFloat(ypos), width: 60, height: 50)
+                
+                UIView.animate(withDuration: Double(arc4random_uniform(13) + 7), delay: 0, options: [.curveLinear], animations: {
+                    beeView.center.x -= self.view.bounds.width + 60}, completion: nil)
+                
+                //Add the image view to the main view
+                self.view.addSubview(beeView)
+                
+                
+            }
+        }
         
         /* */
     }
