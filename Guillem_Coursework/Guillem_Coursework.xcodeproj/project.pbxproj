@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C6330AE12198991B004CF5E1 /* layer-6 road_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C6330AE021989918004CF5E1 /* layer-6 road_2.png */; };
+		C6330AE3219899A4004CF5E1 /* layer-6 road_3.png in Resources */ = {isa = PBXBuildFile; fileRef = C6330AE2219899A0004CF5E1 /* layer-6 road_3.png */; };
 		C63B24A321904F7A00213258 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B24A221904F7A00213258 /* AppDelegate.swift */; };
 		C63B24A521904F7A00213258 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B24A421904F7A00213258 /* ViewController.swift */; };
 		C63B24A821904F7A00213258 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C63B24A621904F7A00213258 /* Main.storyboard */; };
@@ -55,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C6330AE021989918004CF5E1 /* layer-6 road_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "layer-6 road_2.png"; sourceTree = "<group>"; };
+		C6330AE2219899A0004CF5E1 /* layer-6 road_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "layer-6 road_3.png"; sourceTree = "<group>"; };
 		C63B249F21904F7A00213258 /* Guillem_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guillem_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C63B24A221904F7A00213258 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C63B24A421904F7A00213258 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 		C6FA3FF12193598300D59F23 /* background */ = {
 			isa = PBXGroup;
 			children = (
+				C6330AE2219899A0004CF5E1 /* layer-6 road_3.png */,
+				C6330AE021989918004CF5E1 /* layer-6 road_2.png */,
 				C63B24D22190527200213258 /* layer-1 sky.png */,
 				C63B24D4219052DF00213258 /* layer-2 the sun.png */,
 				C63B24D62190531200213258 /* layer-3 clouds.png */,
@@ -323,6 +329,7 @@
 				C63B24DB219053CC00213258 /* layer-5 mountains2.png in Resources */,
 				C6FA3FFF21935B3100D59F23 /* bee5.png in Resources */,
 				C63B24FA2190668D00213258 /* frame-3.png in Resources */,
+				C6330AE12198991B004CF5E1 /* layer-6 road_2.png in Resources */,
 				C63B24FB2190668D00213258 /* frame-4.png in Resources */,
 				C63B24AD21904F7A00213258 /* LaunchScreen.storyboard in Resources */,
 				C63B24AA21904F7A00213258 /* Assets.xcassets in Resources */,
@@ -334,6 +341,7 @@
 				C63B24FF2190668D00213258 /* frame-8.png in Resources */,
 				C6FA3FFB21935B3100D59F23 /* bee6.png in Resources */,
 				C6FA3FFD21935B3100D59F23 /* bee3.png in Resources */,
+				C6330AE3219899A4004CF5E1 /* layer-6 road_3.png in Resources */,
 				C63B24F92190668D00213258 /* frame-2.png in Resources */,
 				C63B24F82190668D00213258 /* frame-1.png in Resources */,
 				C63B24FD2190668D00213258 /* frame-6.png in Resources */,

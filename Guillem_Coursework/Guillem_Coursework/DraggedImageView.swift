@@ -53,7 +53,7 @@ class DraggedImageView: UIImageView {
         //Assign the y of the image center as the smallest value between the width of the edges of the least halfy screen, and the center.y assigned in the previous line
         self.center.y = min((self.superview?.bounds.size.height)! - halfy, center.y)
         
-        
+       
         
     }
     

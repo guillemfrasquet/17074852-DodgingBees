@@ -27,6 +27,11 @@ class ViewController: UIViewController{
     @IBOutlet weak var bird: UIImageView!
     @IBOutlet weak var bee: UIImageView!
     
+    
+    var dynamicAnimator: UIDynamicAnimator!
+    var collisionBehavior:UICollisionBehavior!
+    var gravityBehavior: UIGravityBehavior!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -61,11 +66,12 @@ class ViewController: UIViewController{
         
         bird.image = UIImage.animatedImage(with: birdArray,duration: 0.5)
 
+        var totalsecs = 0
         
-        for i in 1...10{
-            var secs = Int(arc4random_uniform(20))
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(secs)) {
+        for i in 1...15{
+            var secs = Int(arc4random_uniform(4)+2)
+            totalsecs += secs   //the bee will appear after 2 to 4 seconds of the last bee
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(totalsecs)) {
                 // Your code for actions when the time is up}
                 //Create a new UIImageView from scratch
                 var beeView = UIImageView(image: nil)
@@ -87,7 +93,7 @@ class ViewController: UIViewController{
                 //Assign the size and position of the image view
                 let screenSize = UIScreen.main.bounds
                 var xpos = screenSize.width;
-                var ypos = arc4random_uniform(UInt32(screenSize.height - 50));
+                var ypos = arc4random_uniform(UInt32(screenSize.height - 100));
                     //Int.random(in: 10...screenSize.height);
                 
                 beeView.frame = CGRect(x:xpos, y: CGFloat(ypos), width: 60, height: 50)
@@ -98,9 +104,29 @@ class ViewController: UIViewController{
                 //Add the image view to the main view
                 self.view.addSubview(beeView)
                 
+            
                 
             }
+            
+
+            
         }
+        
+        // Boundaries
+        
+        dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
+        
+        //gravityBehavior = UIGravityBehavior(items: [bird])
+        //dynamicAnimator.addBehavior(gravityBehavior)
+        
+        collisionBehavior = UICollisionBehavior(items: [bird])
+        collisionBehavior.translatesReferenceBoundsIntoBoundary = true
+        
+        collisionBehavior.addBoundary(withIdentifier: "road" as NSCopying, for: UIBezierPath(rect: bgRoad.frame))
+        
+        dynamicAnimator.addBehavior(collisionBehavior)
+        
+        
         
         /* */
     }
