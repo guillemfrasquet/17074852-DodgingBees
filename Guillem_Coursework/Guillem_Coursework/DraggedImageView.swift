@@ -45,13 +45,15 @@ class DraggedImageView: UIImageView {
         
         //Y
         //Get the value of the midpoint in and between the edges of the image (halfy)
-        let halfy = self.bounds.midY
+        let halfy = self.bounds.midY//+63/2
         
         //Assign the y of the image center as the highest value between halfy and the center.y previously assigned
         self.center.y = max(halfy, center.y)
         
         //Assign the y of the image center as the smallest value between the width of the edges of the least halfy screen, and the center.y assigned in the previous line
-        self.center.y = min((self.superview?.bounds.size.height)! - halfy, center.y)
+        self.center.y = min((self.superview?.bounds.size.height)! - halfy - 55, center.y)
+                    // this 55 is more or less the size of the road,       ^^^^
+                    // so we substract this value from the total height to avoid 'overstep' the ground
         
        
         
