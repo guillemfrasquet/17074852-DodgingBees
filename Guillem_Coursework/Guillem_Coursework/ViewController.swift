@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 
 protocol subviewDelegate {
@@ -35,6 +36,13 @@ class ViewController: UIViewController{
     @IBOutlet weak var finishLabel: UILabel!
     
     
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+    var ambientMusic: AVAudioPlayer?
+    
+    var score = 0
+    
+    
     @IBAction func restartButton(_ sender: UIButton) {
         //beeEnemyArray.removeAll()
         for i in 0...14 {
@@ -47,6 +55,10 @@ class ViewController: UIViewController{
         setBirdOrigin()
         createEnemies()
         setCollisions()
+        score = 0
+        scoreLabel.text = String(score)
+        
+        self.ambientMusic?.setVolume(3, fadeDuration: 1)
     }
     
     var dynamicAnimator: UIDynamicAnimator!
@@ -64,6 +76,19 @@ class ViewController: UIViewController{
         finishView.isHidden = true
         
         animateBackground()
+        
+        //Play ambient music
+        let path = Bundle.main.path(forResource:"Magical-Getaway.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        do{
+            ambientMusic = try AVAudioPlayer(contentsOf:url)
+            ambientMusic?.play()
+            self.ambientMusic?.setVolume(3, fadeDuration: 1)
+            
+        }
+        catch{
+            // couldn't load file :(
+        }
         
         
         
@@ -120,6 +145,7 @@ class ViewController: UIViewController{
             print("TIME'S OVER!")
             self.finishView.isHidden = false
             self.view.bringSubview(toFront: self.finishView)
+            self.ambientMusic?.setVolume(1, fadeDuration: 1)
             
             
         }
@@ -153,7 +179,7 @@ class ViewController: UIViewController{
     func setCollisions(){
         dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         
-        collisionBehavior = UICollisionBehavior(/*items: [bird, beeEnemyArray[0], beeEnemyArray[1], beeEnemyArray[2], beeEnemyArray[3], beeEnemyArray[4], beeEnemyArray[5], beeEnemyArray[6], beeEnemyArray[7], beeEnemyArray[8], beeEnemyArray[9], beeEnemyArray[10], beeEnemyArray[11], beeEnemyArray[12], beeEnemyArray[13], beeEnemyArray[14]]*/)
+        collisionBehavior = UICollisionBehavior(items: [bird/*, beeEnemyArray[0], beeEnemyArray[1], beeEnemyArray[2], beeEnemyArray[3], beeEnemyArray[4], beeEnemyArray[5], beeEnemyArray[6], beeEnemyArray[7], beeEnemyArray[8], beeEnemyArray[9], beeEnemyArray[10], beeEnemyArray[11], beeEnemyArray[12], beeEnemyArray[13], beeEnemyArray[14]*/])
         collisionBehavior.translatesReferenceBoundsIntoBoundary = true
         
         /*for i in 0...14{
@@ -168,7 +194,10 @@ class ViewController: UIViewController{
         dynamicAnimator.addBehavior(collisionBehavior)
         
         
-        collisionBehavior.action = {print("collision")}
+        collisionBehavior.action = {
+            self.score -= 10
+            self.scoreLabel.text = String(self.score)
+        }
     }
 
     override func didReceiveMemoryWarning() {

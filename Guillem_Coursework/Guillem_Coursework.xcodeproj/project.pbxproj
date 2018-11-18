@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C610F71D21A1EB8000A6C245 /* Magical-Getaway.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C610F71C21A1EB8000A6C245 /* Magical-Getaway.mp3 */; };
 		C6330AE12198991B004CF5E1 /* layer-6 road_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C6330AE021989918004CF5E1 /* layer-6 road_2.png */; };
 		C6330AE3219899A4004CF5E1 /* layer-6 road_3.png in Resources */ = {isa = PBXBuildFile; fileRef = C6330AE2219899A0004CF5E1 /* layer-6 road_3.png */; };
 		C63B24A321904F7A00213258 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B24A221904F7A00213258 /* AppDelegate.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C610F71C21A1EB8000A6C245 /* Magical-Getaway.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Magical-Getaway.mp3"; path = "../../Music/Magical-Getaway.mp3"; sourceTree = "<group>"; };
 		C6330AE021989918004CF5E1 /* layer-6 road_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "layer-6 road_2.png"; sourceTree = "<group>"; };
 		C6330AE2219899A0004CF5E1 /* layer-6 road_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "layer-6 road_3.png"; sourceTree = "<group>"; };
 		C63B249F21904F7A00213258 /* Guillem_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guillem_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +145,7 @@
 		C63B24A121904F7A00213258 /* Guillem_Coursework */ = {
 			isa = PBXGroup;
 			children = (
+				C610F71C21A1EB8000A6C245 /* Magical-Getaway.mp3 */,
 				C6FA3FF12193598300D59F23 /* background */,
 				C6FA3FF0219358E500D59F23 /* bird */,
 				C6FA3FF321935A2300D59F23 /* bee enemy */,
@@ -339,6 +342,7 @@
 				C63B24FC2190668D00213258 /* frame-5.png in Resources */,
 				C6FA3FFC21935B3100D59F23 /* bee1.png in Resources */,
 				C63B24FF2190668D00213258 /* frame-8.png in Resources */,
+				C610F71D21A1EB8000A6C245 /* Magical-Getaway.mp3 in Resources */,
 				C6FA3FFB21935B3100D59F23 /* bee6.png in Resources */,
 				C6FA3FFD21935B3100D59F23 /* bee3.png in Resources */,
 				C6330AE3219899A4004CF5E1 /* layer-6 road_3.png in Resources */,
