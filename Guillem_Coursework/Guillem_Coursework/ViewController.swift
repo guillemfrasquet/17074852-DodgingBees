@@ -62,6 +62,9 @@ class ViewController: UIViewController{
     }
     
     var dynamicAnimator: UIDynamicAnimator!
+    var dynamicItemBehavior: UIDynamicItemBehavior!
+    
+    
     var collisionBehavior:UICollisionBehavior!
     var gravityBehavior: UIGravityBehavior!
     
@@ -105,13 +108,20 @@ class ViewController: UIViewController{
         ]
         
         bird.image = UIImage.animatedImage(with: birdArray,duration: 0.5)
+        
 
+        dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
+
+        dynamicItemBehavior = UIDynamicItemBehavior(items: [])
         
+        dynamicAnimator.addBehavior(dynamicItemBehavior)
+
+       
         
-        createEnemies()
+        //createEnemies()
+        createBeeEnemy(delay: 2)
         
-        
-        setCollisions()
+        //setCollisions()
 
         
         startTimer()
@@ -177,15 +187,16 @@ class ViewController: UIViewController{
     
     
     func setCollisions(){
-        dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
+        //dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         
-        collisionBehavior = UICollisionBehavior(items: [bird/*, beeEnemyArray[0], beeEnemyArray[1], beeEnemyArray[2], beeEnemyArray[3], beeEnemyArray[4], beeEnemyArray[5], beeEnemyArray[6], beeEnemyArray[7], beeEnemyArray[8], beeEnemyArray[9], beeEnemyArray[10], beeEnemyArray[11], beeEnemyArray[12], beeEnemyArray[13], beeEnemyArray[14]*/])
+        collisionBehavior = UICollisionBehavior(items: [/*bird, beeEnemyArray[0], beeEnemyArray[1], beeEnemyArray[2], beeEnemyArray[3], beeEnemyArray[4], beeEnemyArray[5], beeEnemyArray[6], beeEnemyArray[7], beeEnemyArray[8], beeEnemyArray[9], beeEnemyArray[10], beeEnemyArray[11], beeEnemyArray[12], beeEnemyArray[13], beeEnemyArray[14]*/])
         collisionBehavior.translatesReferenceBoundsIntoBoundary = true
         
         /*for i in 0...14{
          collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: beeEnemyArray[i].frame))
          }*/
         
+        //Add main avatar as a boundary
         collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
         
         print("bird:")
@@ -228,13 +239,22 @@ class ViewController: UIViewController{
         let ypos = arc4random_uniform(UInt32(screenSize.height - 100));
         //Int.random(in: 10...screenSize.height);
         
-        beeView.frame = CGRect(x:xpos, y: CGFloat(ypos), width: 60, height: 50)
+        beeView.frame = CGRect(x:xpos-100, y: CGFloat(ypos), width: 60, height: 50)
         
-        UIView.animate(withDuration: Double(arc4random_uniform(13) + 7), delay: TimeInterval(delay), options: [.curveLinear], animations: {
-            beeView.center.x -= self.view.bounds.width + 60}, completion: nil)
+        /*UIView.animate(withDuration: Double(arc4random_uniform(13) + 7), delay: TimeInterval(delay), options: [.curveLinear], animations: {
+            beeView.center.x -= self.view.bounds.width + 60}, completion: nil)*/
+        
+        
+        
+        //dynamicItemBehavior = UIDynamicItemBehavior(items: [beeView])
+        self.view.addSubview(beeView)
         
         //Add the image view to the main view
-        self.view.addSubview(beeView)
+        dynamicItemBehavior.addItem(beeView)
+        
+        dynamicItemBehavior.addLinearVelocity(CGPoint(x:-100, y:0), for: beeView)
+        
+        
         
         beeEnemyArray.append(beeView)
         
