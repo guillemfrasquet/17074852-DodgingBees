@@ -15,7 +15,7 @@ protocol subviewDelegate {
 }
 
 
-class ViewController: UIViewController{
+class ViewController: UIViewController, subviewDelegate {
     
     
     @IBOutlet weak var bgSky: UIImageView!
@@ -25,7 +25,8 @@ class ViewController: UIViewController{
     @IBOutlet weak var bgMountains2: UIImageView!
     @IBOutlet weak var bgRoad: UIImageView!
     
-    @IBOutlet weak var bird: UIImageView!
+    //@IBOutlet weak var bird: UIImageView!
+    @IBOutlet weak var bird: DraggedImageView!
     @IBOutlet weak var bee: UIImageView!
     
     
@@ -42,25 +43,6 @@ class ViewController: UIViewController{
     
     var score = 0
     
-    
-    @IBAction func restartButton(_ sender: UIButton) {
-        //beeEnemyArray.removeAll()
-        for i in 0...14 {
-            beeEnemyArray[i].removeFromSuperview()
-        }
-        beeEnemyArray.removeAll()
-        self.finishView.isHidden = true
-        //animateBackground()
-        startTimer()
-        setBirdOrigin()
-        createEnemies()
-        setCollisions()
-        score = 0
-        scoreLabel.text = String(score)
-        
-        self.ambientMusic?.setVolume(3, fadeDuration: 1)
-    }
-    
     var dynamicAnimator: UIDynamicAnimator!
     var dynamicItemBehavior: UIDynamicItemBehavior!
     
@@ -69,12 +51,46 @@ class ViewController: UIViewController{
     var gravityBehavior: UIGravityBehavior!
     
     var beeEnemyArray = [UIImageView]()
+    
+    
+    @IBAction func restartButton(_ sender: UIButton) {
+        //beeEnemyArray.removeAll()
+        
+        self.finishView.isHidden = true
+        //animateBackground()
+        var items = dynamicItemBehavior.items
+        for i in items {
+            dynamicItemBehavior.removeItem(i)
+        }
+        
+        for i in 0...beeEnemyArray.count-1 {
+            beeEnemyArray[i].removeFromSuperview()
+        }
+        
+        startTimer()
+        setBirdOrigin()
+        createEnemies()
+        //setCollisions()
+        score = 0
+        scoreLabel.text = String(score)
+        
+        self.ambientMusic?.setVolume(3, fadeDuration: 1)
+    }
+    
+    
+    func changeSomething() {
+        collisionBehavior.removeAllBoundaries()
+        collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
+    }
+   
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        bird.myDelegate = self
         
         finishView.isHidden = true
         
@@ -115,11 +131,23 @@ class ViewController: UIViewController{
         dynamicItemBehavior = UIDynamicItemBehavior(items: [])
         
         dynamicAnimator.addBehavior(dynamicItemBehavior)
+        
+        
+        collisionBehavior = UICollisionBehavior(items: [])
+        
+        dynamicAnimator.addBehavior(collisionBehavior)
+        
+        //Add main avatar as a boundary
+        collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
 
+        collisionBehavior.action = {
+            self.score -= 10
+            self.scoreLabel.text = String(self.score)
+        }
        
         
-        //createEnemies()
-        createBeeEnemy(delay: 2)
+        createEnemies()
+        //createBeeEnemy(delay: 2)
         
         //setCollisions()
 
@@ -176,11 +204,13 @@ class ViewController: UIViewController{
             }
             
             totalsecs += secs   //the bee will appear after 2 to 4 seconds of the last bee
-            //DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(totalsecs)) {
-            // Your code for actions when the time is up}
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(totalsecs)) {
+            // Your code for actions when the time is up
+                self.createBeeEnemy()
+            }
             //Create a new UIImageView from scratch
             
-            self.createBeeEnemy(delay: totalsecs)
+            
             
         }
     }
@@ -189,7 +219,7 @@ class ViewController: UIViewController{
     func setCollisions(){
         //dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         
-        collisionBehavior = UICollisionBehavior(items: [/*bird, beeEnemyArray[0], beeEnemyArray[1], beeEnemyArray[2], beeEnemyArray[3], beeEnemyArray[4], beeEnemyArray[5], beeEnemyArray[6], beeEnemyArray[7], beeEnemyArray[8], beeEnemyArray[9], beeEnemyArray[10], beeEnemyArray[11], beeEnemyArray[12], beeEnemyArray[13], beeEnemyArray[14]*/])
+        //collisionBehavior = UICollisionBehavior(items: [/*bird,*/ beeEnemyArray[0]])
         collisionBehavior.translatesReferenceBoundsIntoBoundary = true
         
         /*for i in 0...14{
@@ -197,18 +227,18 @@ class ViewController: UIViewController{
          }*/
         
         //Add main avatar as a boundary
-        collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
+        //collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
         
         print("bird:")
         print(bird.frame)
         
-        dynamicAnimator.addBehavior(collisionBehavior)
+        //dynamicAnimator.addBehavior(collisionBehavior)
         
         
-        collisionBehavior.action = {
+        /*collisionBehavior.action = {
             self.score -= 10
             self.scoreLabel.text = String(self.score)
-        }
+        }*/
     }
 
     override func didReceiveMemoryWarning() {
@@ -216,7 +246,7 @@ class ViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
-    func createBeeEnemy(delay: Int) {
+    func createBeeEnemy() {
         var beeView = UIImageView(image: nil)
         
         //Assign an array of images to the image view
@@ -237,9 +267,8 @@ class ViewController: UIViewController{
         let screenSize = UIScreen.main.bounds
         let xpos = screenSize.width;
         let ypos = arc4random_uniform(UInt32(screenSize.height - 100));
-        //Int.random(in: 10...screenSize.height);
-        
-        beeView.frame = CGRect(x:xpos-100, y: CGFloat(ypos), width: 60, height: 50)
+        //ypos = UInt32(screenSize.height/2-50) //to test collision with the initial position of the bird
+        beeView.frame = CGRect(x:xpos, y: CGFloat(ypos), width: 60, height: 50)
         
         /*UIView.animate(withDuration: Double(arc4random_uniform(13) + 7), delay: TimeInterval(delay), options: [.curveLinear], animations: {
             beeView.center.x -= self.view.bounds.width + 60}, completion: nil)*/
@@ -249,10 +278,17 @@ class ViewController: UIViewController{
         //dynamicItemBehavior = UIDynamicItemBehavior(items: [beeView])
         self.view.addSubview(beeView)
         
-        //Add the image view to the main view
         dynamicItemBehavior.addItem(beeView)
         
-        dynamicItemBehavior.addLinearVelocity(CGPoint(x:-100, y:0), for: beeView)
+        let upperValue = -110
+        let lowerValue = -90
+        let velx = -1 * (Int(arc4random_uniform(90) + 110))
+        //let velx = upperValue
+        
+        dynamicItemBehavior.addLinearVelocity(CGPoint(x:velx, y:0), for: beeView)
+        
+        
+        collisionBehavior.addItem(beeView)
         
         
         
