@@ -40,8 +40,13 @@ class ViewController: UIViewController, subviewDelegate {
     @IBOutlet weak var scoreLabel: UILabel!
     
     var ambientMusic: AVAudioPlayer?
+    var beeCollisionSound: AVAudioPlayer?
+    
+    var gameEnded = false
     
     var score = 0
+    
+    var collisionProtection = false     //var to protect bird from collisions
     
     var dynamicAnimator: UIDynamicAnimator!
     var dynamicItemBehavior: UIDynamicItemBehavior!
@@ -65,7 +70,10 @@ class ViewController: UIViewController, subviewDelegate {
         
         for i in 0...beeEnemyArray.count-1 {
             beeEnemyArray[i].removeFromSuperview()
+            
         }
+        beeEnemyArray.removeAll()
+        
         
         startTimer()
         setBirdOrigin()
@@ -75,6 +83,8 @@ class ViewController: UIViewController, subviewDelegate {
         scoreLabel.text = String(score)
         
         self.ambientMusic?.setVolume(3, fadeDuration: 1)
+        
+        self.gameEnded = false
     }
     
     
@@ -111,7 +121,10 @@ class ViewController: UIViewController, subviewDelegate {
         
         
         
+        
+        
         var birdArray: [UIImage]!
+        var birdHitArray: [UIImage]!
         
         birdArray = [UIImage(named: "frame-1.png")!,
                      UIImage(named: "frame-2.png")!,
@@ -122,6 +135,9 @@ class ViewController: UIViewController, subviewDelegate {
                      UIImage(named: "frame-7.png")!,
                      UIImage(named: "frame-8.png")!
         ]
+        
+        birdHitArray = [UIImage(named: "birdhit-1.png")!,
+                        UIImage(named: "birdhit-2.png")!]
         
         bird.image = UIImage.animatedImage(with: birdArray,duration: 0.5)
         
@@ -140,17 +156,55 @@ class ViewController: UIViewController, subviewDelegate {
         //Add main avatar as a boundary
         collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
 
-        collisionBehavior.action = {
+        /*collisionBehavior.action = {
             self.score -= 10
             self.scoreLabel.text = String(self.score)
-        }
-       
+        }*/
+        
+     
         
         createEnemies()
         //createBeeEnemy(delay: 2)
         
         //setCollisions()
 
+        collisionBehavior.action = {
+            for i in 0...self.beeEnemyArray.count-1 {
+                
+                if(!self.collisionProtection)
+               {
+                if(self.bird.frame.intersects(self.beeEnemyArray[i].frame))
+                {
+                    self.collisionProtection = true
+                    self.score -= 10
+                    self.scoreLabel.text = String(self.score)
+                    
+                    //Change bird animation to hit animation
+                    self.bird.image = UIImage.animatedImage(with: birdHitArray,duration: 0.5)
+                    
+                    //Sound effect
+                    let path = Bundle.main.path(forResource:"beeCollision.wav", ofType:nil)!
+                    let url = URL(fileURLWithPath: path)
+                    do{
+                        self.beeCollisionSound = try AVAudioPlayer(contentsOf:url)
+                        self.beeCollisionSound?.play()
+                        self.beeCollisionSound?.setVolume(3, fadeDuration: 0)
+                        
+                    }
+                    catch{
+                        // couldn't load file :(
+                    }
+                    
+                   //Bird image animation restored to the normal one after 2 seconds
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                        self.collisionProtection = false
+                        self.bird.image = UIImage.animatedImage(with: birdArray,duration: 0.5)
+                    }
+                }
+                }
+            }
+            
+        }
         
         startTimer()
         
@@ -184,6 +238,7 @@ class ViewController: UIViewController, subviewDelegate {
             self.finishView.isHidden = false
             self.view.bringSubview(toFront: self.finishView)
             self.ambientMusic?.setVolume(1, fadeDuration: 1)
+            self.gameEnded = true
             
             
         }
@@ -206,10 +261,11 @@ class ViewController: UIViewController, subviewDelegate {
             totalsecs += secs   //the bee will appear after 2 to 4 seconds of the last bee
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(totalsecs)) {
             // Your code for actions when the time is up
-                self.createBeeEnemy()
+                if(!self.gameEnded){
+                    self.createBeeEnemy()
+                }
             }
             //Create a new UIImageView from scratch
-            
             
             
         }
@@ -288,7 +344,17 @@ class ViewController: UIViewController, subviewDelegate {
         dynamicItemBehavior.addLinearVelocity(CGPoint(x:velx, y:0), for: beeView)
         
         
+        
         collisionBehavior.addItem(beeView)
+        
+        /*collisionBehavior.action = {
+            if(self.bird.frame.intersects(beeView.frame))
+            {
+                self.score -= 10
+                self.scoreLabel.text = String(self.score)
+            }
+            
+        }*/
         
         
         
