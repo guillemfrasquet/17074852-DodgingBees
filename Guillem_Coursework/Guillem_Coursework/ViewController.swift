@@ -56,6 +56,7 @@ class ViewController: UIViewController, subviewDelegate {
     var gravityBehavior: UIGravityBehavior!
     
     var beeEnemyArray = [UIImageView]()
+    var coinArray = [UIImageView]()
     
     
     @IBAction func restartButton(_ sender: UIButton) {
@@ -78,6 +79,7 @@ class ViewController: UIViewController, subviewDelegate {
         startTimer()
         setBirdOrigin()
         createEnemies()
+        createCoins()
         //setCollisions()
         score = 0
         scoreLabel.text = String(score)
@@ -155,6 +157,9 @@ class ViewController: UIViewController, subviewDelegate {
         
         //Add main avatar as a boundary
         collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
+        
+        
+        //collisionBehavior.collisionMode = UICollisionBehavior.Mode.boundaries
 
         /*collisionBehavior.action = {
             self.score -= 10
@@ -167,6 +172,8 @@ class ViewController: UIViewController, subviewDelegate {
         //createBeeEnemy(delay: 2)
         
         //setCollisions()
+        
+        createCoins()
 
         collisionBehavior.action = {
             for i in 0...self.beeEnemyArray.count-1 {
@@ -201,10 +208,51 @@ class ViewController: UIViewController, subviewDelegate {
                         self.bird.image = UIImage.animatedImage(with: birdArray,duration: 0.5)
                     }
                 }
+                
+                
                 }
+                
             }
             
+        
+        var toRemove = [Int]()
+        var numberOfCoins = self.coinArray.count-1
+         for var j in 0...numberOfCoins {
+            print(self.coinArray.count)
+            if(self.bird.frame.intersects(self.coinArray[j].frame))
+            {
+                self.score += 10
+                self.scoreLabel.text = String(self.score)
+                
+                self.coinArray[j].removeFromSuperview()
+                toRemove.append(j)
+                
+                
+
+                
+                //Sound effect
+                let path = Bundle.main.path(forResource:"coin.wav", ofType:nil)!
+                let url = URL(fileURLWithPath: path)
+                do{
+                    self.beeCollisionSound = try AVAudioPlayer(contentsOf:url)
+                    self.beeCollisionSound?.play()
+                    self.beeCollisionSound?.setVolume(3, fadeDuration: 0)
+                    
+                }
+                catch{
+                    // couldn't load file :(
+                }
+            }
         }
+            if(toRemove.count > 0){
+                for k in 0...toRemove.count-1{
+                    self.coinArray.remove(at: toRemove[k])
+                }
+                
+                toRemove.removeAll()
+            }
+            
+    }
         
         startTimer()
         
@@ -244,6 +292,69 @@ class ViewController: UIViewController, subviewDelegate {
         }
     }
     
+    func createBeeEnemy() {
+        var beeView = UIImageView(image: nil)
+        
+        //Assign an array of images to the image view
+        var beeArray: [UIImage]!
+        
+        beeArray = [UIImage(named: "bee1.png")!,
+                    UIImage(named: "bee2.png")!,
+                    UIImage(named: "bee3.png")!,
+                    UIImage(named: "bee4.png")!,
+                    UIImage(named: "bee5.png")!,
+                    UIImage(named: "bee6.png")!
+        ]
+        
+        beeView.image = UIImage.animatedImage(with: beeArray,duration: 0.1)
+        //beeView.image = UIImage(named: "bee1.png")
+        
+        //Assign the size and position of the image view
+        let screenSize = UIScreen.main.bounds
+        let xpos = screenSize.width;
+        let ypos = arc4random_uniform(UInt32(screenSize.height - 100));
+        //ypos = UInt32(screenSize.height/2-50) //to test collision with the initial position of the bird
+        beeView.frame = CGRect(x:xpos, y: CGFloat(ypos), width: 60, height: 50)
+        
+        /*UIView.animate(withDuration: Double(arc4random_uniform(13) + 7), delay: TimeInterval(delay), options: [.curveLinear], animations: {
+         beeView.center.x -= self.view.bounds.width + 60}, completion: nil)*/
+        
+        
+        
+        //dynamicItemBehavior = UIDynamicItemBehavior(items: [beeView])
+        self.view.addSubview(beeView)
+        
+        dynamicItemBehavior.addItem(beeView)
+        
+        let upperValue = -110
+        let lowerValue = -90
+        let velx = -1 * (Int(arc4random_uniform(90) + 110))
+        //let velx = upperValue
+        
+        dynamicItemBehavior.addLinearVelocity(CGPoint(x:velx, y:0), for: beeView)
+        
+        
+        
+        collisionBehavior.addItem(beeView)
+        
+        //collisionBehavior.collisionMode
+        
+        /*collisionBehavior.action = {
+         if(self.bird.frame.intersects(beeView.frame))
+         {
+         self.score -= 10
+         self.scoreLabel.text = String(self.score)
+         }
+         
+         }*/
+        
+        
+        
+        beeEnemyArray.append(beeView)
+
+        
+    }
+    
     func createEnemies(){
         var totalsecs = 0
         var secs = 0
@@ -269,7 +380,91 @@ class ViewController: UIViewController, subviewDelegate {
             
             
         }
+        
     }
+    
+    
+    func createCoin() {
+        var coinView = UIImageView(image: nil)
+        
+        //Assign an array of images to the image view
+        var coinImageArray: [UIImage]!
+        
+        coinImageArray = [UIImage(named: "star coin rotate 1.png")!,
+                    UIImage(named: "star coin rotate 2.png")!,
+                    UIImage(named: "star coin rotate 3.png")!,
+                    UIImage(named: "star coin rotate 4.png")!,
+                    UIImage(named: "star coin rotate 5.png")!,
+                    UIImage(named: "star coin rotate 6.png")!
+        ]
+        
+        coinView.image = UIImage.animatedImage(with: coinImageArray,duration: 0.1)
+
+        
+        //Assign the size and position of the image view
+        let screenSize = UIScreen.main.bounds
+        let xpos = screenSize.width;
+        let ypos = arc4random_uniform(UInt32(screenSize.height - 100));
+
+        coinView.frame = CGRect(x:xpos, y: CGFloat(ypos), width: 30, height: 30)
+        
+        self.view.addSubview(coinView)
+        
+        dynamicItemBehavior.addItem(coinView)
+        
+        let upperValue = -110
+        let lowerValue = -90
+        let velx = -1 * (Int(arc4random_uniform(90) + 110))
+
+        dynamicItemBehavior.addLinearVelocity(CGPoint(x:velx, y:0), for: coinView)
+        
+        
+        
+        collisionBehavior.addItem(coinView)
+        
+        //collisionBehavior.collisionMode = bird
+
+        
+        coinArray.append(coinView)
+        
+        
+    }
+    
+    func createCoins(){
+        var totalsecsCoins = 0
+        var secsCoin = 0
+        var firstcoin = true
+        
+        for i in 1...15{
+            if(!firstcoin){
+                secsCoin = Int(arc4random_uniform(3)+1)
+                
+            }
+            else{
+                firstcoin = false
+            }
+            
+            totalsecsCoins += secsCoin   //the bee will appear after 2 to 4 seconds of the last bee
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(totalsecsCoins)) {
+                // Your code for actions when the time is up
+                if(!self.gameEnded){
+                    self.createCoin()
+                }
+            }
+            //Create a new UIImageView from scratch
+            
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     func setCollisions(){
@@ -302,70 +497,7 @@ class ViewController: UIViewController, subviewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func createBeeEnemy() {
-        var beeView = UIImageView(image: nil)
-        
-        //Assign an array of images to the image view
-        var beeArray: [UIImage]!
-        
-        beeArray = [UIImage(named: "bee1.png")!,
-                    UIImage(named: "bee2.png")!,
-                    UIImage(named: "bee3.png")!,
-                    UIImage(named: "bee4.png")!,
-                    UIImage(named: "bee5.png")!,
-                    UIImage(named: "bee6.png")!
-        ]
-        
-        beeView.image = UIImage.animatedImage(with: beeArray,duration: 0.1)
-        //beeView.image = UIImage(named: "bee1.png")
-        
-        //Assign the size and position of the image view
-        let screenSize = UIScreen.main.bounds
-        let xpos = screenSize.width;
-        let ypos = arc4random_uniform(UInt32(screenSize.height - 100));
-        //ypos = UInt32(screenSize.height/2-50) //to test collision with the initial position of the bird
-        beeView.frame = CGRect(x:xpos, y: CGFloat(ypos), width: 60, height: 50)
-        
-        /*UIView.animate(withDuration: Double(arc4random_uniform(13) + 7), delay: TimeInterval(delay), options: [.curveLinear], animations: {
-            beeView.center.x -= self.view.bounds.width + 60}, completion: nil)*/
-        
-        
-        
-        //dynamicItemBehavior = UIDynamicItemBehavior(items: [beeView])
-        self.view.addSubview(beeView)
-        
-        dynamicItemBehavior.addItem(beeView)
-        
-        let upperValue = -110
-        let lowerValue = -90
-        let velx = -1 * (Int(arc4random_uniform(90) + 110))
-        //let velx = upperValue
-        
-        dynamicItemBehavior.addLinearVelocity(CGPoint(x:velx, y:0), for: beeView)
-        
-        
-        
-        collisionBehavior.addItem(beeView)
-        
-        /*collisionBehavior.action = {
-            if(self.bird.frame.intersects(beeView.frame))
-            {
-                self.score -= 10
-                self.scoreLabel.text = String(self.score)
-            }
-            
-        }*/
-        
-        
-        
-        beeEnemyArray.append(beeView)
-        
-        
-        
-        
-        
-        
-    }
+
     
     func setBirdOrigin() {
         bird.frame.origin.x = 20

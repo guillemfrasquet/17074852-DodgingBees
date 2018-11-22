@@ -32,6 +32,13 @@
 		C63B24FE2190668D00213258 /* frame-7.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24F62190668D00213258 /* frame-7.png */; };
 		C63B24FF2190668D00213258 /* frame-8.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24F72190668D00213258 /* frame-8.png */; };
 		C652BC112190C118000EAB6F /* DraggedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C652BC102190C118000EAB6F /* DraggedImageView.swift */; };
+		C66E047C21A71B0300F389CF /* star coin rotate 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C66E047621A71AF500F389CF /* star coin rotate 1.png */; };
+		C66E047D21A71B0300F389CF /* star coin rotate 6.png in Resources */ = {isa = PBXBuildFile; fileRef = C66E047721A71AF800F389CF /* star coin rotate 6.png */; };
+		C66E047E21A71B0300F389CF /* star coin rotate 4.png in Resources */ = {isa = PBXBuildFile; fileRef = C66E047821A71AFA00F389CF /* star coin rotate 4.png */; };
+		C66E047F21A71B0300F389CF /* star coin rotate 5.png in Resources */ = {isa = PBXBuildFile; fileRef = C66E047921A71AFD00F389CF /* star coin rotate 5.png */; };
+		C66E048021A71B0300F389CF /* star coin rotate 2.png in Resources */ = {isa = PBXBuildFile; fileRef = C66E047A21A71AFF00F389CF /* star coin rotate 2.png */; };
+		C66E048121A71B0300F389CF /* star coin rotate 3.png in Resources */ = {isa = PBXBuildFile; fileRef = C66E047B21A71B0100F389CF /* star coin rotate 3.png */; };
+		C66E048521A737C300F389CF /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = C66E048421A737C300F389CF /* coin.wav */; };
 		C68B62D921A486EE000796C3 /* birdhit-1.png in Resources */ = {isa = PBXBuildFile; fileRef = C68B62D721A486E8000796C3 /* birdhit-1.png */; };
 		C68B62DA21A486EE000796C3 /* birdhit-2.png in Resources */ = {isa = PBXBuildFile; fileRef = C68B62D821A486EC000796C3 /* birdhit-2.png */; };
 		C68B62DD21A4907B000796C3 /* beeCollision.wav in Resources */ = {isa = PBXBuildFile; fileRef = C68B62DC21A4907A000796C3 /* beeCollision.wav */; };
@@ -61,7 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C610F71C21A1EB8000A6C245 /* Magical-Getaway.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Magical-Getaway.mp3"; path = "../../Music/Magical-Getaway.mp3"; sourceTree = "<group>"; };
+		C610F71C21A1EB8000A6C245 /* Magical-Getaway.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Magical-Getaway.mp3"; sourceTree = "<group>"; };
 		C6330AE021989918004CF5E1 /* layer-6 road_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "layer-6 road_2.png"; sourceTree = "<group>"; };
 		C6330AE2219899A0004CF5E1 /* layer-6 road_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "layer-6 road_3.png"; sourceTree = "<group>"; };
 		C63B249F21904F7A00213258 /* Guillem_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guillem_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +99,13 @@
 		C63B24F62190668D00213258 /* frame-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame-7.png"; sourceTree = "<group>"; };
 		C63B24F72190668D00213258 /* frame-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame-8.png"; sourceTree = "<group>"; };
 		C652BC102190C118000EAB6F /* DraggedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggedImageView.swift; sourceTree = "<group>"; };
+		C66E047621A71AF500F389CF /* star coin rotate 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star coin rotate 1.png"; sourceTree = "<group>"; };
+		C66E047721A71AF800F389CF /* star coin rotate 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star coin rotate 6.png"; sourceTree = "<group>"; };
+		C66E047821A71AFA00F389CF /* star coin rotate 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star coin rotate 4.png"; sourceTree = "<group>"; };
+		C66E047921A71AFD00F389CF /* star coin rotate 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star coin rotate 5.png"; sourceTree = "<group>"; };
+		C66E047A21A71AFF00F389CF /* star coin rotate 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star coin rotate 2.png"; sourceTree = "<group>"; };
+		C66E047B21A71B0100F389CF /* star coin rotate 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star coin rotate 3.png"; sourceTree = "<group>"; };
+		C66E048421A737C300F389CF /* coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin.wav; sourceTree = "<group>"; };
 		C68B62D721A486E8000796C3 /* birdhit-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "birdhit-1.png"; sourceTree = "<group>"; };
 		C68B62D821A486EC000796C3 /* birdhit-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "birdhit-2.png"; sourceTree = "<group>"; };
 		C68B62DC21A4907A000796C3 /* beeCollision.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = beeCollision.wav; path = Guillem_Coursework/beeCollision.wav; sourceTree = SOURCE_ROOT; };
@@ -151,6 +165,7 @@
 		C63B24A121904F7A00213258 /* Guillem_Coursework */ = {
 			isa = PBXGroup;
 			children = (
+				C66E047521A71AB700F389CF /* Coin */,
 				C68B62DB21A4904B000796C3 /* Sounds */,
 				C610F71C21A1EB8000A6C245 /* Magical-Getaway.mp3 */,
 				C6FA3FF12193598300D59F23 /* background */,
@@ -185,9 +200,23 @@
 			path = Guillem_CourseworkUITests;
 			sourceTree = "<group>";
 		};
+		C66E047521A71AB700F389CF /* Coin */ = {
+			isa = PBXGroup;
+			children = (
+				C66E047621A71AF500F389CF /* star coin rotate 1.png */,
+				C66E047A21A71AFF00F389CF /* star coin rotate 2.png */,
+				C66E047B21A71B0100F389CF /* star coin rotate 3.png */,
+				C66E047821A71AFA00F389CF /* star coin rotate 4.png */,
+				C66E047921A71AFD00F389CF /* star coin rotate 5.png */,
+				C66E047721A71AF800F389CF /* star coin rotate 6.png */,
+			);
+			path = Coin;
+			sourceTree = "<group>";
+		};
 		C68B62DB21A4904B000796C3 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				C66E048421A737C300F389CF /* coin.wav */,
 				C68B62DC21A4907A000796C3 /* beeCollision.wav */,
 			);
 			path = Sounds;
@@ -345,7 +374,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C66E047D21A71B0300F389CF /* star coin rotate 6.png in Resources */,
 				C68B62DD21A4907B000796C3 /* beeCollision.wav in Resources */,
+				C66E047F21A71B0300F389CF /* star coin rotate 5.png in Resources */,
 				C6FA3FFE21935B3100D59F23 /* bee4.png in Resources */,
 				C63B24DB219053CC00213258 /* layer-5 mountains2.png in Resources */,
 				C6FA3FFF21935B3100D59F23 /* bee5.png in Resources */,
@@ -358,20 +389,25 @@
 				C63B24D92190534400213258 /* layer-4 mountains1.png in Resources */,
 				C6FA3FFA21935B3100D59F23 /* bee2.png in Resources */,
 				C63B24D72190531200213258 /* layer-3 clouds.png in Resources */,
+				C66E048021A71B0300F389CF /* star coin rotate 2.png in Resources */,
 				C63B24FC2190668D00213258 /* frame-5.png in Resources */,
+				C66E047E21A71B0300F389CF /* star coin rotate 4.png in Resources */,
 				C6FA3FFC21935B3100D59F23 /* bee1.png in Resources */,
 				C63B24FF2190668D00213258 /* frame-8.png in Resources */,
 				C610F71D21A1EB8000A6C245 /* Magical-Getaway.mp3 in Resources */,
 				C6FA3FFB21935B3100D59F23 /* bee6.png in Resources */,
 				C68B62DA21A486EE000796C3 /* birdhit-2.png in Resources */,
 				C6FA3FFD21935B3100D59F23 /* bee3.png in Resources */,
+				C66E048121A71B0300F389CF /* star coin rotate 3.png in Resources */,
 				C6330AE3219899A4004CF5E1 /* layer-6 road_3.png in Resources */,
 				C63B24F92190668D00213258 /* frame-2.png in Resources */,
 				C63B24F82190668D00213258 /* frame-1.png in Resources */,
 				C63B24FD2190668D00213258 /* frame-6.png in Resources */,
+				C66E047C21A71B0300F389CF /* star coin rotate 1.png in Resources */,
 				C63B24D32190527200213258 /* layer-1 sky.png in Resources */,
 				C63B24D5219052DF00213258 /* layer-2 the sun.png in Resources */,
 				C63B24FE2190668D00213258 /* frame-7.png in Resources */,
+				C66E048521A737C300F389CF /* coin.wav in Resources */,
 				C63B24A821904F7A00213258 /* Main.storyboard in Resources */,
 				C63B24DD2190542700213258 /* layer-6 road.png in Resources */,
 			);
