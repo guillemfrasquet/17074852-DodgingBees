@@ -92,6 +92,7 @@ class ViewController: UIViewController, subviewDelegate {
     
     func changeSomething() {
         collisionBehavior.removeAllBoundaries()
+        //collisionBehavior.translatesReferenceBoundsIntoBoundary = true
         collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
     }
    
@@ -158,7 +159,6 @@ class ViewController: UIViewController, subviewDelegate {
         //Add main avatar as a boundary
         collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
         
-        
         //collisionBehavior.collisionMode = UICollisionBehavior.Mode.boundaries
 
         /*collisionBehavior.action = {
@@ -185,6 +185,16 @@ class ViewController: UIViewController, subviewDelegate {
                     self.collisionProtection = true
                     self.score -= 10
                     self.scoreLabel.text = String(self.score)
+
+                    
+                    UIView.animate(withDuration: 0.2, delay: 0, options: [UIViewAnimationOptions.curveLinear, .repeat, .autoreverse],  animations:  {self.beeEnemyArray[i].alpha=0},completion:nil)
+                    //self.beeEnemyArray[i].frame = CGRect.zero
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                         self.beeEnemyArray[i].removeFromSuperview()
+                    }
+                    
+                    
                     
                     //Change bird animation to hit animation
                     self.bird.image = UIImage.animatedImage(with: birdHitArray,duration: 0.5)
@@ -217,6 +227,10 @@ class ViewController: UIViewController, subviewDelegate {
         
         var toRemove = [Int]()
         var numberOfCoins = self.coinArray.count-1
+        if(numberOfCoins < 0){
+                numberOfCoins = 0
+            }
+        
          for var j in 0...numberOfCoins {
             print(self.coinArray.count)
             if(self.bird.frame.intersects(self.coinArray[j].frame))
@@ -252,7 +266,8 @@ class ViewController: UIViewController, subviewDelegate {
                 toRemove.removeAll()
             }
             
-    }
+        }
+        
         
         startTimer()
         
