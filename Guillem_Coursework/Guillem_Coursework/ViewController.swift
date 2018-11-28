@@ -47,6 +47,7 @@ class ViewController: UIViewController, subviewDelegate {
     var score = 0
     
     var collisionProtection = false     //var to protect bird from collisions
+    var collisionProtectionCoins = false
     
     var dynamicAnimator: UIDynamicAnimator!
     var dynamicItemBehavior: UIDynamicItemBehavior!
@@ -59,6 +60,8 @@ class ViewController: UIViewController, subviewDelegate {
     var coinArray = [UIImageView]()
     
     
+    @IBOutlet weak var finishViewMountains: UIImageView!
+    
     @IBAction func restartButton(_ sender: UIButton) {
         //beeEnemyArray.removeAll()
         
@@ -69,10 +72,10 @@ class ViewController: UIViewController, subviewDelegate {
             dynamicItemBehavior.removeItem(i)
         }
         
-        for i in 0...beeEnemyArray.count-1 {
+        /*for i in 0...beeEnemyArray.count-1 {
             beeEnemyArray[i].removeFromSuperview()
             
-        }
+        }*/
         beeEnemyArray.removeAll()
         
         
@@ -88,6 +91,9 @@ class ViewController: UIViewController, subviewDelegate {
         
         self.gameEnded = false
     }
+    
+    
+    @IBOutlet weak var finalScoreLabel: UILabel!
     
     
     func changeSomething() {
@@ -106,8 +112,9 @@ class ViewController: UIViewController, subviewDelegate {
         bird.myDelegate = self
         
         finishView.isHidden = true
+        //finishView.isHidden = false
         
-        animateBackground()
+        //animateBackground()
         
         //Play ambient music
         let path = Bundle.main.path(forResource:"Magical-Getaway.mp3", ofType:nil)!
@@ -176,14 +183,21 @@ class ViewController: UIViewController, subviewDelegate {
         createCoins()
 
         collisionBehavior.action = {
-            for i in 0...self.beeEnemyArray.count-1 {
+            var numberOfBees = self.beeEnemyArray.count-1
+            if(numberOfBees < 0){
+                numberOfBees = 0
+            }
+            
+            for i in 0...numberOfBees {
                 
-                if(!self.collisionProtection)
+                if(!self.collisionProtection && !self.beeEnemyArray.isEmpty)
                {
                 if(self.bird.frame.intersects(self.beeEnemyArray[i].frame))
                 {
                     self.collisionProtection = true
-                    self.score -= 10
+                    if(self.score > 0){
+                        self.score -= 10
+                    }
                     self.scoreLabel.text = String(self.score)
 
                     
@@ -191,7 +205,11 @@ class ViewController: UIViewController, subviewDelegate {
                     //self.beeEnemyArray[i].frame = CGRect.zero
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                         self.beeEnemyArray[i].removeFromSuperview()
+                        if(i < self.beeEnemyArray.count){   //to avoid error if beeenemyArray has been emptied during the second of waiting -case time's up-
+                            self.beeEnemyArray[i].removeFromSuperview()
+                            self.beeEnemyArray[i].frame = CGRect.zero
+                        }
+
                     }
                     
                     
@@ -225,39 +243,39 @@ class ViewController: UIViewController, subviewDelegate {
             }
             
         
-        var toRemove = [Int]()
-        var numberOfCoins = self.coinArray.count-1
-        if(numberOfCoins < 0){
+            var toRemove = [Int]()
+            var numberOfCoins = self.coinArray.count-1
+            if(numberOfCoins < 0){
                 numberOfCoins = 0
             }
-        
-         for var j in 0...numberOfCoins {
-            print(self.coinArray.count)
-            if(self.bird.frame.intersects(self.coinArray[j].frame))
-            {
-                self.score += 10
-                self.scoreLabel.text = String(self.score)
-                
-                self.coinArray[j].removeFromSuperview()
-                toRemove.append(j)
-                
-                
-
-                
-                //Sound effect
-                let path = Bundle.main.path(forResource:"coin.wav", ofType:nil)!
-                let url = URL(fileURLWithPath: path)
-                do{
-                    self.beeCollisionSound = try AVAudioPlayer(contentsOf:url)
-                    self.beeCollisionSound?.play()
-                    self.beeCollisionSound?.setVolume(3, fadeDuration: 0)
+            
+            for var j in 0...numberOfCoins {
+                print(self.coinArray.count)
+                if(j < self.coinArray.count && self.bird.frame.intersects(self.coinArray[j].frame))
+                {
+                    self.score += 10
+                    self.scoreLabel.text = String(self.score)
                     
-                }
-                catch{
-                    // couldn't load file :(
+                    self.coinArray[j].removeFromSuperview()
+                    toRemove.append(j)
+                    
+                    
+                    
+                    
+                    //Sound effect
+                    let path = Bundle.main.path(forResource:"coin.wav", ofType:nil)!
+                    let url = URL(fileURLWithPath: path)
+                    do{
+                        self.beeCollisionSound = try AVAudioPlayer(contentsOf:url)
+                        self.beeCollisionSound?.play()
+                        self.beeCollisionSound?.setVolume(3, fadeDuration: 0)
+                        
+                    }
+                    catch{
+                        // couldn't load file :(
+                    }
                 }
             }
-        }
             if(toRemove.count > 0){
                 for k in 0...toRemove.count-1{
                     self.coinArray.remove(at: toRemove[k])
@@ -298,10 +316,13 @@ class ViewController: UIViewController, subviewDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(20)) {
             
             print("TIME'S OVER!")
+            self.finalScoreLabel.text = String(self.score)
             self.finishView.isHidden = false
             self.view.bringSubview(toFront: self.finishView)
+            self.removeAllEnemies()
             self.ambientMusic?.setVolume(1, fadeDuration: 1)
             self.gameEnded = true
+            UIView.animate(withDuration: 45, delay: 0, options: [.curveLinear, .repeat], animations: {self.finishViewMountains.center.x -= self.view.bounds.width})
             
             
         }
@@ -321,7 +342,7 @@ class ViewController: UIViewController, subviewDelegate {
                     UIImage(named: "bee6.png")!
         ]
         
-        beeView.image = UIImage.animatedImage(with: beeArray,duration: 0.1)
+        beeView.image = UIImage.animatedImage(with: beeArray,duration: 0.4)
         //beeView.image = UIImage(named: "bee1.png")
         
         //Assign the size and position of the image view
@@ -399,6 +420,15 @@ class ViewController: UIViewController, subviewDelegate {
     }
     
     
+    func removeAllEnemies() {
+        for i in 0...beeEnemyArray.count-1
+        {
+            beeEnemyArray[i].removeFromSuperview()
+        }
+        beeEnemyArray.removeAll()
+    }
+    
+    
     func createCoin() {
         var coinView = UIImageView(image: nil)
         
@@ -413,7 +443,7 @@ class ViewController: UIViewController, subviewDelegate {
                     UIImage(named: "star coin rotate 6.png")!
         ]
         
-        coinView.image = UIImage.animatedImage(with: coinImageArray,duration: 0.1)
+        coinView.image = UIImage.animatedImage(with: coinImageArray,duration: 0.7)
 
         
         //Assign the size and position of the image view
@@ -470,6 +500,11 @@ class ViewController: UIViewController, subviewDelegate {
             
             
         }
+    }
+    
+    
+    func removeAllCoins(){
+        
     }
     
     
