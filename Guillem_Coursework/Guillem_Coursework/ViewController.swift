@@ -36,6 +36,10 @@ class ViewController: UIViewController, subviewDelegate {
     @IBOutlet weak var finishView: UIView!
     @IBOutlet weak var finishLabel: UILabel!
     
+    @IBOutlet weak var startView: UIView!
+    
+    
+    @IBOutlet weak var howToPlayView: UIView!
     
     @IBOutlet weak var scoreLabel: UILabel!
     
@@ -62,79 +66,22 @@ class ViewController: UIViewController, subviewDelegate {
     
     @IBOutlet weak var finishViewMountains: UIImageView!
     
-    @IBAction func restartButton(_ sender: UIButton) {
-        //beeEnemyArray.removeAll()
+    
+    
+    @IBAction func startGameButton(_ sender: UIButton) {
+        startGame()
         
-        self.finishView.isHidden = true
-        //animateBackground()
-        var items = dynamicItemBehavior.items
-        for i in items {
-            dynamicItemBehavior.removeItem(i)
-        }
-        
-        /*for i in 0...beeEnemyArray.count-1 {
-            beeEnemyArray[i].removeFromSuperview()
-            
-        }*/
-        beeEnemyArray.removeAll()
-        
-        
-        startTimer()
-        setBirdOrigin()
-        createEnemies()
-        createCoins()
-        //setCollisions()
-        score = 0
-        scoreLabel.text = String(score)
-        
-        self.ambientMusic?.setVolume(3, fadeDuration: 1)
-        
-        self.gameEnded = false
+        startView.isHidden = true
     }
     
     
-    @IBOutlet weak var finalScoreLabel: UILabel!
-    
-    
-    func changeSomething() {
-        collisionBehavior.removeAllBoundaries()
-        //collisionBehavior.translatesReferenceBoundsIntoBoundary = true
-        collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
-    }
-   
-
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        bird.myDelegate = self
-        
-        finishView.isHidden = true
-        //finishView.isHidden = false
-        
-        //animateBackground()
-        
-        //Play ambient music
-        let path = Bundle.main.path(forResource:"Magical-Getaway.mp3", ofType:nil)!
-        let url = URL(fileURLWithPath: path)
-        do{
-            ambientMusic = try AVAudioPlayer(contentsOf:url)
-            ambientMusic?.play()
-            self.ambientMusic?.setVolume(3, fadeDuration: 1)
-            
-        }
-        catch{
-            // couldn't load file :(
-        }
-        
-        
-        
-        
-        
+    func startGame(){
         var birdArray: [UIImage]!
         var birdHitArray: [UIImage]!
+        
+        score = 0
+        scoreLabel.text = String(score)
+        setBirdOrigin()
         
         birdArray = [UIImage(named: "frame-1.png")!,
                      UIImage(named: "frame-2.png")!,
@@ -151,9 +98,9 @@ class ViewController: UIViewController, subviewDelegate {
         
         bird.image = UIImage.animatedImage(with: birdArray,duration: 0.5)
         
-
+        
         dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
-
+        
         dynamicItemBehavior = UIDynamicItemBehavior(items: [])
         
         dynamicAnimator.addBehavior(dynamicItemBehavior)
@@ -167,13 +114,13 @@ class ViewController: UIViewController, subviewDelegate {
         collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
         
         //collisionBehavior.collisionMode = UICollisionBehavior.Mode.boundaries
-
-        /*collisionBehavior.action = {
-            self.score -= 10
-            self.scoreLabel.text = String(self.score)
-        }*/
         
-     
+        /*collisionBehavior.action = {
+         self.score -= 10
+         self.scoreLabel.text = String(self.score)
+         }*/
+        
+        
         
         createEnemies()
         //createBeeEnemy(delay: 2)
@@ -181,7 +128,7 @@ class ViewController: UIViewController, subviewDelegate {
         //setCollisions()
         
         createCoins()
-
+        
         collisionBehavior.action = {
             var numberOfBees = self.beeEnemyArray.count-1
             if(numberOfBees < 0){
@@ -191,58 +138,58 @@ class ViewController: UIViewController, subviewDelegate {
             for i in 0...numberOfBees {
                 
                 if(!self.collisionProtection && !self.beeEnemyArray.isEmpty)
-               {
-                if(self.bird.frame.intersects(self.beeEnemyArray[i].frame))
                 {
-                    self.collisionProtection = true
-                    if(self.score > 0){
-                        self.score -= 10
-                    }
-                    self.scoreLabel.text = String(self.score)
-
-                    
-                    UIView.animate(withDuration: 0.2, delay: 0, options: [UIViewAnimationOptions.curveLinear, .repeat, .autoreverse],  animations:  {self.beeEnemyArray[i].alpha=0},completion:nil)
-                    //self.beeEnemyArray[i].frame = CGRect.zero
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                        if(i < self.beeEnemyArray.count){   //to avoid error if beeenemyArray has been emptied during the second of waiting -case time's up-
-                            self.beeEnemyArray[i].removeFromSuperview()
-                            self.beeEnemyArray[i].frame = CGRect.zero
+                    if(self.bird.frame.intersects(self.beeEnemyArray[i].frame))
+                    {
+                        self.collisionProtection = true
+                        if(self.score > 0){
+                            self.score -= 10
                         }
-
-                    }
-                    
-                    
-                    
-                    //Change bird animation to hit animation
-                    self.bird.image = UIImage.animatedImage(with: birdHitArray,duration: 0.5)
-                    
-                    //Sound effect
-                    let path = Bundle.main.path(forResource:"beeCollision.wav", ofType:nil)!
-                    let url = URL(fileURLWithPath: path)
-                    do{
-                        self.beeCollisionSound = try AVAudioPlayer(contentsOf:url)
-                        self.beeCollisionSound?.play()
-                        self.beeCollisionSound?.setVolume(3, fadeDuration: 0)
+                        self.scoreLabel.text = String(self.score)
                         
-                    }
-                    catch{
-                        // couldn't load file :(
+                        
+                        UIView.animate(withDuration: 0.2, delay: 0, options: [UIViewAnimationOptions.curveLinear, .repeat, .autoreverse],  animations:  {self.beeEnemyArray[i].alpha=0},completion:nil)
+                        //self.beeEnemyArray[i].frame = CGRect.zero
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                            if(i < self.beeEnemyArray.count){   //to avoid error if beeenemyArray has been emptied during the second of waiting -case time's up-
+                                self.beeEnemyArray[i].removeFromSuperview()
+                                self.beeEnemyArray[i].frame = CGRect.zero
+                            }
+                            
+                        }
+                        
+                        
+                        
+                        //Change bird animation to hit animation
+                        self.bird.image = UIImage.animatedImage(with: birdHitArray,duration: 0.5)
+                        
+                        //Sound effect
+                        let path = Bundle.main.path(forResource:"beeCollision.wav", ofType:nil)!
+                        let url = URL(fileURLWithPath: path)
+                        do{
+                            self.beeCollisionSound = try AVAudioPlayer(contentsOf:url)
+                            self.beeCollisionSound?.play()
+                            self.beeCollisionSound?.setVolume(3, fadeDuration: 0)
+                            
+                        }
+                        catch{
+                            // couldn't load file :(
+                        }
+                        
+                        //Bird image animation restored to the normal one after 2 seconds
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                            self.collisionProtection = false
+                            self.bird.image = UIImage.animatedImage(with: birdArray,duration: 0.5)
+                        }
                     }
                     
-                   //Bird image animation restored to the normal one after 2 seconds
-                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                        self.collisionProtection = false
-                        self.bird.image = UIImage.animatedImage(with: birdArray,duration: 0.5)
-                    }
-                }
-                
-                
+                    
                 }
                 
             }
             
-        
+            
             var toRemove = [Int]()
             var numberOfCoins = self.coinArray.count-1
             if(numberOfCoins < 0){
@@ -276,9 +223,12 @@ class ViewController: UIViewController, subviewDelegate {
                     }
                 }
             }
+            ///////////////////!!!!!!!!!!!!!!!! FATAL ERROR IF 2 COINS COLLECTED AT THE SAME TIME!!!!!!!
             if(toRemove.count > 0){
                 for k in 0...toRemove.count-1{
-                    self.coinArray.remove(at: toRemove[k])
+                    if(toRemove.count > 0){
+                        self.coinArray.remove(at: toRemove[k])
+                    }
                 }
                 
                 toRemove.removeAll()
@@ -288,6 +238,108 @@ class ViewController: UIViewController, subviewDelegate {
         
         
         startTimer()
+    }
+    
+    
+    
+    
+    @IBAction func restartButton(_ sender: UIButton) {
+        //beeEnemyArray.removeAll()
+        
+        self.finishView.isHidden = true
+        //animateBackground()
+        var items = dynamicItemBehavior.items
+        for i in items {
+            dynamicItemBehavior.removeItem(i)
+        }
+        
+        /*for i in 0...beeEnemyArray.count-1 {
+            beeEnemyArray[i].removeFromSuperview()
+            
+        }*/
+        beeEnemyArray.removeAll()
+        self.finishViewMountains.stopAnimating()
+        
+        /*
+        startTimer()
+        
+        createEnemies()
+        createCoins()
+        //setCollisions()
+        
+ */
+        
+        
+        
+        startGame()
+        
+        self.ambientMusic?.setVolume(3, fadeDuration: 1)
+        
+        self.gameEnded = false
+    }
+    
+    
+    @IBOutlet weak var finalScoreLabel: UILabel!
+    
+    
+    @IBAction func goMenuButton(_ sender: UIButton) {
+        finishView.isHidden = true
+        startView.isHidden = false
+        self.view.bringSubview(toFront: startView)
+    }
+    
+    
+    @IBAction func goHowToPlayButton(_ sender: UIButton) {
+        howToPlayView.isHidden = false
+        self.view.bringSubview(toFront: howToPlayView)
+    }
+    
+    
+    @IBAction func closeHowToPlayButton(_ sender: UIButton) {
+        howToPlayView.isHidden = true
+    }
+    
+    
+    
+    func changeSomething() {
+        collisionBehavior.removeAllBoundaries()
+        //collisionBehavior.translatesReferenceBoundsIntoBoundary = true
+        collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
+    }
+   
+
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        bird.myDelegate = self
+        
+        finishView.isHidden = true
+        //finishView.isHidden = false
+        howToPlayView.isHidden = true
+        
+        //animateBackground()
+        
+        //Play ambient music
+        let path = Bundle.main.path(forResource:"Magical-Getaway.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        do{
+            ambientMusic = try AVAudioPlayer(contentsOf:url)
+            ambientMusic?.play()
+            self.ambientMusic?.setVolume(3, fadeDuration: 1)
+            
+        }
+        catch{
+            // couldn't load file :(
+        }
+        
+        
+        
+        
+        
+        ///////////
         
     }
     
@@ -308,6 +360,8 @@ class ViewController: UIViewController, subviewDelegate {
         UIView.animate(withDuration: 15, delay: 0, options: [.curveLinear, .repeat], animations: {self.bgRoad.center.x -= self.view.bounds.width}, completion: nil)
     }
     
+    var firsttime = true
+    
     func startTimer(){
         var timer = Timer()
         
@@ -322,7 +376,13 @@ class ViewController: UIViewController, subviewDelegate {
             self.removeAllEnemies()
             self.ambientMusic?.setVolume(1, fadeDuration: 1)
             self.gameEnded = true
+            if(self.firsttime){
             UIView.animate(withDuration: 45, delay: 0, options: [.curveLinear, .repeat], animations: {self.finishViewMountains.center.x -= self.view.bounds.width})
+                self.firsttime = false
+            }
+            else{
+                self.finishViewMountains.startAnimating()
+            }
             
             
         }
