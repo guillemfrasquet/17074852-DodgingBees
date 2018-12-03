@@ -31,6 +31,12 @@
 		C63B24FD2190668D00213258 /* frame-6.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24F52190668D00213258 /* frame-6.png */; };
 		C63B24FE2190668D00213258 /* frame-7.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24F62190668D00213258 /* frame-7.png */; };
 		C63B24FF2190668D00213258 /* frame-8.png in Resources */ = {isa = PBXBuildFile; fileRef = C63B24F72190668D00213258 /* frame-8.png */; };
+		C63D51D121B5C6D700825A19 /* blue coin 6.png in Resources */ = {isa = PBXBuildFile; fileRef = C63D51CB21B5C6C700825A19 /* blue coin 6.png */; };
+		C63D51D221B5C6D700825A19 /* blue coin 2.png in Resources */ = {isa = PBXBuildFile; fileRef = C63D51CC21B5C6CA00825A19 /* blue coin 2.png */; };
+		C63D51D321B5C6D700825A19 /* blue coin 3.png in Resources */ = {isa = PBXBuildFile; fileRef = C63D51CD21B5C6CD00825A19 /* blue coin 3.png */; };
+		C63D51D421B5C6D700825A19 /* blue coin 4.png in Resources */ = {isa = PBXBuildFile; fileRef = C63D51CE21B5C6CF00825A19 /* blue coin 4.png */; };
+		C63D51D521B5C6D700825A19 /* blue coin 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C63D51CF21B5C6D200825A19 /* blue coin 1.png */; };
+		C63D51D621B5C6D700825A19 /* blue coin 5.png in Resources */ = {isa = PBXBuildFile; fileRef = C63D51D021B5C6D400825A19 /* blue coin 5.png */; };
 		C652BC112190C118000EAB6F /* DraggedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C652BC102190C118000EAB6F /* DraggedImageView.swift */; };
 		C66E047C21A71B0300F389CF /* star coin rotate 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C66E047621A71AF500F389CF /* star coin rotate 1.png */; };
 		C66E047D21A71B0300F389CF /* star coin rotate 6.png in Resources */ = {isa = PBXBuildFile; fileRef = C66E047721A71AF800F389CF /* star coin rotate 6.png */; };
@@ -101,6 +107,12 @@
 		C63B24F52190668D00213258 /* frame-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame-6.png"; sourceTree = "<group>"; };
 		C63B24F62190668D00213258 /* frame-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame-7.png"; sourceTree = "<group>"; };
 		C63B24F72190668D00213258 /* frame-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame-8.png"; sourceTree = "<group>"; };
+		C63D51CB21B5C6C700825A19 /* blue coin 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue coin 6.png"; sourceTree = "<group>"; };
+		C63D51CC21B5C6CA00825A19 /* blue coin 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue coin 2.png"; sourceTree = "<group>"; };
+		C63D51CD21B5C6CD00825A19 /* blue coin 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue coin 3.png"; sourceTree = "<group>"; };
+		C63D51CE21B5C6CF00825A19 /* blue coin 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue coin 4.png"; sourceTree = "<group>"; };
+		C63D51CF21B5C6D200825A19 /* blue coin 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue coin 1.png"; sourceTree = "<group>"; };
+		C63D51D021B5C6D400825A19 /* blue coin 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue coin 5.png"; sourceTree = "<group>"; };
 		C652BC102190C118000EAB6F /* DraggedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggedImageView.swift; sourceTree = "<group>"; };
 		C66E047621A71AF500F389CF /* star coin rotate 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star coin rotate 1.png"; sourceTree = "<group>"; };
 		C66E047721A71AF800F389CF /* star coin rotate 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star coin rotate 6.png"; sourceTree = "<group>"; };
@@ -171,6 +183,7 @@
 		C63B24A121904F7A00213258 /* Guillem_Coursework */ = {
 			isa = PBXGroup;
 			children = (
+				C63D51CA21B5C61000825A19 /* Blue Coin */,
 				C6C86A6721B07C2C00062A37 /* closeicon.png */,
 				C6C86A6521B06FB100062A37 /* dragicon.png */,
 				C6C86A6321B0530100062A37 /* button.png */,
@@ -207,6 +220,19 @@
 				C63B24C421904F7A00213258 /* Info.plist */,
 			);
 			path = Guillem_CourseworkUITests;
+			sourceTree = "<group>";
+		};
+		C63D51CA21B5C61000825A19 /* Blue Coin */ = {
+			isa = PBXGroup;
+			children = (
+				C63D51CF21B5C6D200825A19 /* blue coin 1.png */,
+				C63D51CC21B5C6CA00825A19 /* blue coin 2.png */,
+				C63D51CD21B5C6CD00825A19 /* blue coin 3.png */,
+				C63D51CE21B5C6CF00825A19 /* blue coin 4.png */,
+				C63D51D021B5C6D400825A19 /* blue coin 5.png */,
+				C63D51CB21B5C6C700825A19 /* blue coin 6.png */,
+			);
+			path = "Blue Coin";
 			sourceTree = "<group>";
 		};
 		C66E047521A71AB700F389CF /* Coin */ = {
@@ -387,20 +413,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				C66E047D21A71B0300F389CF /* star coin rotate 6.png in Resources */,
+				C63D51D121B5C6D700825A19 /* blue coin 6.png in Resources */,
 				C68B62DD21A4907B000796C3 /* beeCollision.wav in Resources */,
 				C66E047F21A71B0300F389CF /* star coin rotate 5.png in Resources */,
 				C6FA3FFE21935B3100D59F23 /* bee4.png in Resources */,
+				C63D51D221B5C6D700825A19 /* blue coin 2.png in Resources */,
 				C63B24DB219053CC00213258 /* layer-5 mountains2.png in Resources */,
 				C6FA3FFF21935B3100D59F23 /* bee5.png in Resources */,
 				C63B24FA2190668D00213258 /* frame-3.png in Resources */,
 				C68B62D921A486EE000796C3 /* birdhit-1.png in Resources */,
 				C6330AE12198991B004CF5E1 /* layer-6 road_2.png in Resources */,
 				C63B24FB2190668D00213258 /* frame-4.png in Resources */,
+				C63D51D621B5C6D700825A19 /* blue coin 5.png in Resources */,
 				C63B24AD21904F7A00213258 /* LaunchScreen.storyboard in Resources */,
 				C63B24AA21904F7A00213258 /* Assets.xcassets in Resources */,
 				C63B24D92190534400213258 /* layer-4 mountains1.png in Resources */,
 				C6FA3FFA21935B3100D59F23 /* bee2.png in Resources */,
 				C63B24D72190531200213258 /* layer-3 clouds.png in Resources */,
+				C63D51D421B5C6D700825A19 /* blue coin 4.png in Resources */,
 				C6C86A6421B0530400062A37 /* button.png in Resources */,
 				C66E048021A71B0300F389CF /* star coin rotate 2.png in Resources */,
 				C63B24FC2190668D00213258 /* frame-5.png in Resources */,
@@ -411,9 +441,11 @@
 				C6FA3FFB21935B3100D59F23 /* bee6.png in Resources */,
 				C68B62DA21A486EE000796C3 /* birdhit-2.png in Resources */,
 				C6C86A6821B07C2F00062A37 /* closeicon.png in Resources */,
+				C63D51D521B5C6D700825A19 /* blue coin 1.png in Resources */,
 				C6FA3FFD21935B3100D59F23 /* bee3.png in Resources */,
 				C66E048121A71B0300F389CF /* star coin rotate 3.png in Resources */,
 				C6330AE3219899A4004CF5E1 /* layer-6 road_3.png in Resources */,
+				C63D51D321B5C6D700825A19 /* blue coin 3.png in Resources */,
 				C63B24F92190668D00213258 /* frame-2.png in Resources */,
 				C63B24F82190668D00213258 /* frame-1.png in Resources */,
 				C63B24FD2190668D00213258 /* frame-6.png in Resources */,
@@ -610,7 +642,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "gf18aak.Guillem-Coursework";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -623,7 +655,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "gf18aak.Guillem-Coursework";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
