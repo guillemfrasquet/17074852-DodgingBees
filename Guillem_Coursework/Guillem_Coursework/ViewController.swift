@@ -45,6 +45,7 @@ class ViewController: UIViewController, subviewDelegate {
     
     var ambientMusic: AVAudioPlayer?
     var beeCollisionSound: AVAudioPlayer?
+    var blueCoinSound: AVAudioPlayer?
     
     var gameEnded = false
     
@@ -56,15 +57,20 @@ class ViewController: UIViewController, subviewDelegate {
     var dynamicAnimator: UIDynamicAnimator!
     var dynamicItemBehavior: UIDynamicItemBehavior!
     var dynamicCoinsBehavior: UIDynamicItemBehavior!
+    var dynamicBlueCoinBehavior: UIDynamicItemBehavior!
     
     
     var collisionBehavior:UICollisionBehavior!
     var collisionCoinsBehavior:UICollisionBehavior!
+    var collisionBlueCoinBehavior:UICollisionBehavior!
     
     var gravityBehavior: UIGravityBehavior!
     
     var beeEnemyArray = [UIImageView]()
     var coinArray = [UIImageView]()
+    
+    
+    var blueCoinView = UIImageView(image: nil)
     
     
     @IBOutlet weak var finishViewMountains: UIImageView!
@@ -79,9 +85,16 @@ class ViewController: UIViewController, subviewDelegate {
     
     var birdArray: [UIImage]!
     var birdHitArray: [UIImage]!
+    var coinImageArray: [UIImage]!
+    var blueCoinImageArray: [UIImage]!
+    
+    
+    var blueCoinsActive = false
     
     func startGame(){
         gameEnded = false
+        blueCoinsActive = false
+        
         
         score = 0
         scoreLabel.text = String(score)
@@ -100,6 +113,23 @@ class ViewController: UIViewController, subviewDelegate {
         birdHitArray = [UIImage(named: "birdhit-1.png")!,
                         UIImage(named: "birdhit-2.png")!]
         
+        
+        coinImageArray = [UIImage(named: "star coin rotate 1.png")!,
+                          UIImage(named: "star coin rotate 2.png")!,
+                          UIImage(named: "star coin rotate 3.png")!,
+                          UIImage(named: "star coin rotate 4.png")!,
+                          UIImage(named: "star coin rotate 5.png")!,
+                          UIImage(named: "star coin rotate 6.png")!
+        ]
+        
+        blueCoinImageArray = [UIImage(named: "blue coin 1.png")!,
+                              UIImage(named: "blue coin 2.png")!,
+                              UIImage(named: "blue coin 3.png")!,
+                              UIImage(named: "blue coin 4.png")!,
+                              UIImage(named: "blue coin 5.png")!,
+                              UIImage(named: "blue coin 6.png")!
+        ]
+        
         self.ambientMusic?.setVolume(3, fadeDuration: 1)
         
         bird.image = UIImage.animatedImage(with: birdArray,duration: 0.5)
@@ -109,21 +139,29 @@ class ViewController: UIViewController, subviewDelegate {
         
         dynamicItemBehavior = UIDynamicItemBehavior(items: [])
         dynamicCoinsBehavior = UIDynamicItemBehavior(items: [])
+        dynamicBlueCoinBehavior = UIDynamicItemBehavior(items: [])
         
         dynamicAnimator.addBehavior(dynamicItemBehavior)
         dynamicAnimator.addBehavior(dynamicCoinsBehavior)
+        dynamicAnimator.addBehavior(dynamicBlueCoinBehavior)
         
         
         collisionBehavior = UICollisionBehavior(items: [])
         collisionCoinsBehavior = UICollisionBehavior(items: [])
+        collisionBlueCoinBehavior = UICollisionBehavior(items: [])
 
         
         dynamicAnimator.addBehavior(collisionBehavior)
         dynamicAnimator.addBehavior(collisionCoinsBehavior)
+        dynamicAnimator.addBehavior(collisionBlueCoinBehavior)
         
         //Add main avatar as a boundary
         collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
+        collisionBehavior.addBoundary(withIdentifier: "road" as NSCopying, for: UIBezierPath(rect: bgRoad.frame))
         collisionCoinsBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
+        collisionCoinsBehavior.addBoundary(withIdentifier: "road" as NSCopying, for: UIBezierPath(rect: bgRoad.frame))
+        collisionBlueCoinBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
+        collisionBlueCoinBehavior.addBoundary(withIdentifier: "road" as NSCopying, for: UIBezierPath(rect: bgRoad.frame))
         
         //collisionBehavior.collisionMode = UICollisionBehavior.Mode.boundaries
         
@@ -216,7 +254,13 @@ class ViewController: UIViewController, subviewDelegate {
                 print(self.coinArray.count)
                 if(j < self.coinArray.count && self.bird.frame.intersects(self.coinArray[j].frame))
                 {
-                    self.score += 10
+                    if(!self.blueCoinsActive){
+                        self.score += 10
+                    }
+                    else{
+                        self.score += 20
+                    }
+                    
                     self.scoreLabel.text = String(self.score)
                     
                     self.coinArray[j].removeFromSuperview()
@@ -250,6 +294,34 @@ class ViewController: UIViewController, subviewDelegate {
                 toRemove.removeAll()
             }
             
+        }
+        
+        collisionBlueCoinBehavior.action = {
+            if(self.bird.frame.intersects(self.blueCoinView.frame))
+            {
+                self.blueCoinView.frame = CGRect.zero
+                self.blueCoinsActive = true
+                
+                //Sound effect
+                let path = Bundle.main.path(forResource:"blueCoin.wav", ofType:nil)!
+                let url = URL(fileURLWithPath: path)
+                do{
+                    self.blueCoinSound = try AVAudioPlayer(contentsOf:url)
+                    self.blueCoinSound?.play()
+                    self.blueCoinSound?.setVolume(3, fadeDuration: 0)
+                    
+                }
+                catch{
+                    // couldn't load file :(
+                }
+                
+                
+                for i in 0...self.coinArray.count-1{
+                    self.coinArray[i].image = UIImage.animatedImage(with: self.blueCoinImageArray,duration: 0.7)
+                }
+                print("BLUE COIN")
+                
+            }
         }
         
         
@@ -527,27 +599,13 @@ class ViewController: UIViewController, subviewDelegate {
     func createCoin() {
         var coinView = UIImageView(image: nil)
         
-        //Assign an array of images to the image view
-        var coinImageArray: [UIImage]!
-        var blueCoinImageArray: [UIImage]!
         
-        coinImageArray = [UIImage(named: "star coin rotate 1.png")!,
-                    UIImage(named: "star coin rotate 2.png")!,
-                    UIImage(named: "star coin rotate 3.png")!,
-                    UIImage(named: "star coin rotate 4.png")!,
-                    UIImage(named: "star coin rotate 5.png")!,
-                    UIImage(named: "star coin rotate 6.png")!
-        ]
-        
-        blueCoinImageArray = [UIImage(named: "blue coin 1.png")!,
-                          UIImage(named: "blue coin 2.png")!,
-                          UIImage(named: "blue coin 3.png")!,
-                          UIImage(named: "blue coin 4.png")!,
-                          UIImage(named: "blue coin 5.png")!,
-                          UIImage(named: "blue coin 6.png")!
-        ]
-        
-        coinView.image = UIImage.animatedImage(with: coinImageArray,duration: 0.7)
+        if(!blueCoinsActive){
+            coinView.image = UIImage.animatedImage(with: coinImageArray,duration: 0.7)
+        }
+        else{
+            coinView.image = UIImage.animatedImage(with: blueCoinImageArray,duration: 0.7)
+        }
 
         
         //Assign the size and position of the image view
@@ -608,52 +666,56 @@ class ViewController: UIViewController, subviewDelegate {
     
     
     func removeAllCoins(){
-        for i in 0...coinArray.count-1
-        {
-            coinArray[i].removeFromSuperview()
+        if(coinArray.count-1 > 0){
+            for i in 0...coinArray.count-1
+            {
+                coinArray[i].removeFromSuperview()
+            }
+            
         }
         coinArray.removeAll()
     }
     
     
     func createBigBlueCoin() {
-        var blueCoinView = UIImageView(image: nil)
         
-        //Assign an array of images to the image view
-        var blueCoinImageArray: [UIImage]!
-        
-        
-        blueCoinImageArray = [UIImage(named: "blue coin 1.png")!,
-                              UIImage(named: "blue coin 2.png")!,
-                              UIImage(named: "blue coin 3.png")!,
-                              UIImage(named: "blue coin 4.png")!,
-                              UIImage(named: "blue coin 5.png")!,
-                              UIImage(named: "blue coin 6.png")!
-        ]
-        
-        blueCoinView.image = UIImage.animatedImage(with: blueCoinImageArray,duration: 1)
-        
-        
-        //Assign the size and position of the image view
-        let screenSize = UIScreen.main.bounds
-        let xpos = screenSize.width;
-        let ypos = arc4random_uniform(UInt32(screenSize.height - 100));
-        
-        blueCoinView.frame = CGRect(x:xpos, y: CGFloat(ypos), width: 60, height: 60)
-        
-        self.view.addSubview(blueCoinView)
-        
-        dynamicCoinsBehavior.addItem(blueCoinView)
-        
-        let upperValue = -110
-        let lowerValue = -90
-        let velx = -1 * (Int(arc4random_uniform(140) + 180))
-        
-        dynamicCoinsBehavior.addLinearVelocity(CGPoint(x:velx, y:0), for: blueCoinView)
-        
-        
-        
-        collisionCoinsBehavior.addItem(blueCoinView)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(14)) {
+            //Assign an array of images to the image view
+            var blueCoinImageArray: [UIImage]!
+            
+            
+            blueCoinImageArray = [UIImage(named: "blue coin 1.png")!,
+                                  UIImage(named: "blue coin 2.png")!,
+                                  UIImage(named: "blue coin 3.png")!,
+                                  UIImage(named: "blue coin 4.png")!,
+                                  UIImage(named: "blue coin 5.png")!,
+                                  UIImage(named: "blue coin 6.png")!
+            ]
+            
+            self.blueCoinView.image = UIImage.animatedImage(with: blueCoinImageArray,duration: 1)
+            
+            
+            //Assign the size and position of the image view
+            let screenSize = UIScreen.main.bounds
+            let xpos = screenSize.width;
+            let ypos = arc4random_uniform(UInt32(screenSize.height - 100));
+            
+            self.blueCoinView.frame = CGRect(x:xpos, y: CGFloat(ypos), width: 60, height: 60)
+            
+            self.view.addSubview(self.blueCoinView)
+            
+            self.dynamicBlueCoinBehavior.addItem(self.blueCoinView)
+            
+            let upperValue = -110
+            let lowerValue = -90
+            let velx = -1 * (Int(arc4random_uniform(140) + 180))
+            
+            self.dynamicBlueCoinBehavior.addLinearVelocity(CGPoint(x:velx, y:0), for: self.blueCoinView)
+            
+            
+            
+            self.collisionBlueCoinBehavior.addItem(self.blueCoinView)
+        }
         
     }
     

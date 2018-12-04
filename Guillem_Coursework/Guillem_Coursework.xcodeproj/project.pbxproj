@@ -38,6 +38,7 @@
 		C63D51D521B5C6D700825A19 /* blue coin 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C63D51CF21B5C6D200825A19 /* blue coin 1.png */; };
 		C63D51D621B5C6D700825A19 /* blue coin 5.png in Resources */ = {isa = PBXBuildFile; fileRef = C63D51D021B5C6D400825A19 /* blue coin 5.png */; };
 		C652BC112190C118000EAB6F /* DraggedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C652BC102190C118000EAB6F /* DraggedImageView.swift */; };
+		C65F5DCA21B71CCF00490235 /* blueCoin.wav in Resources */ = {isa = PBXBuildFile; fileRef = C65F5DC921B71CCF00490235 /* blueCoin.wav */; };
 		C66E047C21A71B0300F389CF /* star coin rotate 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C66E047621A71AF500F389CF /* star coin rotate 1.png */; };
 		C66E047D21A71B0300F389CF /* star coin rotate 6.png in Resources */ = {isa = PBXBuildFile; fileRef = C66E047721A71AF800F389CF /* star coin rotate 6.png */; };
 		C66E047E21A71B0300F389CF /* star coin rotate 4.png in Resources */ = {isa = PBXBuildFile; fileRef = C66E047821A71AFA00F389CF /* star coin rotate 4.png */; };
@@ -114,6 +115,7 @@
 		C63D51CF21B5C6D200825A19 /* blue coin 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue coin 1.png"; sourceTree = "<group>"; };
 		C63D51D021B5C6D400825A19 /* blue coin 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue coin 5.png"; sourceTree = "<group>"; };
 		C652BC102190C118000EAB6F /* DraggedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggedImageView.swift; sourceTree = "<group>"; };
+		C65F5DC921B71CCF00490235 /* blueCoin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blueCoin.wav; sourceTree = "<group>"; };
 		C66E047621A71AF500F389CF /* star coin rotate 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star coin rotate 1.png"; sourceTree = "<group>"; };
 		C66E047721A71AF800F389CF /* star coin rotate 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star coin rotate 6.png"; sourceTree = "<group>"; };
 		C66E047821A71AFA00F389CF /* star coin rotate 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star coin rotate 4.png"; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 		C68B62DB21A4904B000796C3 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				C65F5DC921B71CCF00490235 /* blueCoin.wav */,
 				C66E048421A737C300F389CF /* coin.wav */,
 				C68B62DC21A4907A000796C3 /* beeCollision.wav */,
 			);
@@ -452,6 +455,7 @@
 				C66E047C21A71B0300F389CF /* star coin rotate 1.png in Resources */,
 				C63B24D32190527200213258 /* layer-1 sky.png in Resources */,
 				C63B24D5219052DF00213258 /* layer-2 the sun.png in Resources */,
+				C65F5DCA21B71CCF00490235 /* blueCoin.wav in Resources */,
 				C63B24FE2190668D00213258 /* frame-7.png in Resources */,
 				C66E048521A737C300F389CF /* coin.wav in Resources */,
 				C63B24A821904F7A00213258 /* Main.storyboard in Resources */,
