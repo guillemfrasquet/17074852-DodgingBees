@@ -30,6 +30,7 @@ class ViewController: UIViewController, subviewDelegate {
     @IBOutlet weak var bee: UIImageView!
     
     
+    
     @IBOutlet weak var timerLabel: UILabel!
     
     
@@ -91,6 +92,7 @@ class ViewController: UIViewController, subviewDelegate {
     
     var blueCoinsActive = false
     
+    
     func startGame(){
         gameEnded = false
         blueCoinsActive = false
@@ -131,6 +133,17 @@ class ViewController: UIViewController, subviewDelegate {
         ]
         
         self.ambientMusic?.setVolume(3, fadeDuration: 1)
+        
+        
+        bgSun.startAnimating()
+        bgClouds.startAnimating()
+        bgMountains1.startAnimating()
+        bgMountains2.startAnimating()
+        bgRoad.startAnimating()
+ 
+        
+ 
+        //animateBackground()
         
         bird.image = UIImage.animatedImage(with: birdArray,duration: 0.5)
         
@@ -411,11 +424,14 @@ class ViewController: UIViewController, subviewDelegate {
         
         bird.myDelegate = self
         
+        view.bringSubview(toFront: startView)
+        
         finishView.isHidden = true
         //finishView.isHidden = false
         howToPlayView.isHidden = true
         
-        //animateBackground()
+        animateBackground()
+        
         
         //Play ambient music
         let path = Bundle.main.path(forResource:"Magical-Getaway.mp3", ofType:nil)!
@@ -453,6 +469,8 @@ class ViewController: UIViewController, subviewDelegate {
         UIView.animate(withDuration: 45, delay: 0, options: [.curveLinear, .repeat], animations: {self.bgMountains2.center.x -= self.view.bounds.width})
         
         UIView.animate(withDuration: 15, delay: 0, options: [.curveLinear, .repeat], animations: {self.bgRoad.center.x -= self.view.bounds.width}, completion: nil)
+
+        
     }
     
     var firsttime = true
@@ -460,7 +478,12 @@ class ViewController: UIViewController, subviewDelegate {
     func startTimer(){
         var timer = Timer()
         
-        
+        for i in 1...20{
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1+i)) {
+                self.timerLabel.text = String(20-i)
+                print("Time: " + String(20-i))
+            }
+        }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(20)) {
             
@@ -480,6 +503,13 @@ class ViewController: UIViewController, subviewDelegate {
                 self.finishViewMountains.startAnimating()
             }
             
+            /*
+            self.bgSun.layer.removeAllAnimations()
+            self.bgClouds.layer.removeAllAnimations()
+            self.bgMountains1.layer.removeAllAnimations()
+            self.bgMountains2.layer.removeAllAnimations()
+            self.bgRoad.layer.removeAllAnimations()
+             */
             
         }
     }
