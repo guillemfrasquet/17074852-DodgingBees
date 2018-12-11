@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C610F71D21A1EB8000A6C245 /* Magical-Getaway.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C610F71C21A1EB8000A6C245 /* Magical-Getaway.mp3 */; };
+		C62EE20A21C016FE006977C5 /* Magical-Getaway_Looping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C62EE20921C016FE006977C5 /* Magical-Getaway_Looping.mp3 */; };
 		C6330AE12198991B004CF5E1 /* layer-6 road_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C6330AE021989918004CF5E1 /* layer-6 road_2.png */; };
 		C6330AE3219899A4004CF5E1 /* layer-6 road_3.png in Resources */ = {isa = PBXBuildFile; fileRef = C6330AE2219899A0004CF5E1 /* layer-6 road_3.png */; };
 		C63B24A321904F7A00213258 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B24A221904F7A00213258 /* AppDelegate.swift */; };
@@ -79,6 +80,7 @@
 
 /* Begin PBXFileReference section */
 		C610F71C21A1EB8000A6C245 /* Magical-Getaway.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Magical-Getaway.mp3"; sourceTree = "<group>"; };
+		C62EE20921C016FE006977C5 /* Magical-Getaway_Looping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Magical-Getaway_Looping.mp3"; path = "Guillem_Coursework/Magical-Getaway_Looping.mp3"; sourceTree = SOURCE_ROOT; };
 		C6330AE021989918004CF5E1 /* layer-6 road_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "layer-6 road_2.png"; sourceTree = "<group>"; };
 		C6330AE2219899A0004CF5E1 /* layer-6 road_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "layer-6 road_3.png"; sourceTree = "<group>"; };
 		C63B249F21904F7A00213258 /* Guillem_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guillem_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +255,7 @@
 		C68B62DB21A4904B000796C3 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				C62EE20921C016FE006977C5 /* Magical-Getaway_Looping.mp3 */,
 				C65F5DC921B71CCF00490235 /* blueCoin.wav */,
 				C66E048421A737C300F389CF /* coin.wav */,
 				C68B62DC21A4907A000796C3 /* beeCollision.wav */,
@@ -440,6 +443,7 @@
 				C66E047E21A71B0300F389CF /* star coin rotate 4.png in Resources */,
 				C6FA3FFC21935B3100D59F23 /* bee1.png in Resources */,
 				C63B24FF2190668D00213258 /* frame-8.png in Resources */,
+				C62EE20A21C016FE006977C5 /* Magical-Getaway_Looping.mp3 in Resources */,
 				C610F71D21A1EB8000A6C245 /* Magical-Getaway.mp3 in Resources */,
 				C6FA3FFB21935B3100D59F23 /* bee6.png in Resources */,
 				C68B62DA21A486EE000796C3 /* birdhit-2.png in Resources */,

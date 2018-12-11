@@ -84,6 +84,11 @@ class ViewController: UIViewController, subviewDelegate {
         startView.isHidden = true
     }
     
+    
+    @IBOutlet weak var startViewMountains: UIImageView!
+    
+    
+    
     var birdArray: [UIImage]!
     var birdHitArray: [UIImage]!
     var coinImageArray: [UIImage]!
@@ -176,7 +181,9 @@ class ViewController: UIViewController, subviewDelegate {
         collisionBlueCoinBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
         collisionBlueCoinBehavior.addBoundary(withIdentifier: "road" as NSCopying, for: UIBezierPath(rect: bgRoad.frame))
         
+
         //collisionBehavior.collisionMode = UICollisionBehavior.Mode.boundaries
+        
         
         /*collisionBehavior.action = {
          self.score -= 10
@@ -186,9 +193,6 @@ class ViewController: UIViewController, subviewDelegate {
         
         
         createEnemies()
-        //createBeeEnemy(delay: 2)
-        
-        //setCollisions()
         
         createCoins()
         
@@ -264,7 +268,7 @@ class ViewController: UIViewController, subviewDelegate {
             }
             
             for var j in 0...numberOfCoins {
-                print(self.coinArray.count)
+                //print(self.coinArray.count)
                 if(j < self.coinArray.count && self.bird.frame.intersects(self.coinArray[j].frame))
                 {
                     if(!self.blueCoinsActive){
@@ -328,11 +332,12 @@ class ViewController: UIViewController, subviewDelegate {
                     // couldn't load file :(
                 }
                 
-                
-                for i in 0...self.coinArray.count-1{
-                    self.coinArray[i].image = UIImage.animatedImage(with: self.blueCoinImageArray,duration: 0.7)
+                if(self.coinArray.count > 0){
+                    for i in 0...self.coinArray.count-1{
+                        self.coinArray[i].image = UIImage.animatedImage(with: self.blueCoinImageArray,duration: 0.7)
+                    }
                 }
-                print("BLUE COIN")
+                //print("BLUE COIN")
                 
             }
         }
@@ -424,6 +429,9 @@ class ViewController: UIViewController, subviewDelegate {
         
         bird.myDelegate = self
         
+        UIView.animate(withDuration: 110, delay: 0, options: [.curveLinear, .repeat], animations: {self.startViewMountains.center.x -= self.view.bounds.width - 80
+        })
+        
         view.bringSubview(toFront: startView)
         
         finishView.isHidden = true
@@ -434,21 +442,20 @@ class ViewController: UIViewController, subviewDelegate {
         
         
         //Play ambient music
-        let path = Bundle.main.path(forResource:"Magical-Getaway.mp3", ofType:nil)!
+        let path = Bundle.main.path(forResource:"Magical-Getaway_Looping.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
         do{
             ambientMusic = try AVAudioPlayer(contentsOf:url)
             ambientMusic?.play()
             self.ambientMusic?.setVolume(3, fadeDuration: 1)
+            ambientMusic?.numberOfLoops = -1
             
         }
         catch{
             // couldn't load file :(
         }
         
-        
-        
-        
+
         
         ///////////
         
@@ -478,40 +485,45 @@ class ViewController: UIViewController, subviewDelegate {
     func startTimer(){
         var timer = Timer()
         
+        self.timerLabel.text = String(20)
+        
         for i in 1...20{
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1+i)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(i)) {
                 self.timerLabel.text = String(20-i)
-                print("Time: " + String(20-i))
+                //print("Time: " + String(20-i))
             }
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(20)) {
-            
-            print("TIME'S OVER!")
-            self.finalScoreLabel.text = String(self.score)
-            self.finishView.isHidden = false
-            self.view.bringSubview(toFront: self.finishView)
-            self.removeAllEnemies()
-            self.removeAllCoins()
-            self.ambientMusic?.setVolume(1, fadeDuration: 1)
-            self.gameEnded = true
-            if(self.firsttime){
-            UIView.animate(withDuration: 45, delay: 0, options: [.curveLinear, .repeat], animations: {self.finishViewMountains.center.x -= self.view.bounds.width})
-                self.firsttime = false
-            }
-            else{
-                self.finishViewMountains.startAnimating()
-            }
-            
-            /*
-            self.bgSun.layer.removeAllAnimations()
-            self.bgClouds.layer.removeAllAnimations()
-            self.bgMountains1.layer.removeAllAnimations()
-            self.bgMountains2.layer.removeAllAnimations()
-            self.bgRoad.layer.removeAllAnimations()
-             */
-            
+            self.timeIsUp()
         }
+    }
+    
+    func timeIsUp() {
+        print("TIME'S UP!")
+        self.finalScoreLabel.text = String(self.score)
+        self.finishView.isHidden = false
+        self.view.bringSubview(toFront: self.finishView)
+        self.removeAllEnemies()
+        self.removeAllCoins()
+        self.ambientMusic?.setVolume(1, fadeDuration: 1)
+        self.gameEnded = true
+        blueCoinView.frame = CGRect.zero
+        if(self.firsttime){
+            UIView.animate(withDuration: 45, delay: 0, options: [.curveLinear, .repeat], animations: {self.finishViewMountains.center.x -= self.view.bounds.width-80})
+            self.firsttime = false   //45  / self.view.bounds.width-80
+        }
+        else{
+            self.finishViewMountains.startAnimating()
+        }
+        
+        /*
+         self.bgSun.layer.removeAllAnimations()
+         self.bgClouds.layer.removeAllAnimations()
+         self.bgMountains1.layer.removeAllAnimations()
+         self.bgMountains2.layer.removeAllAnimations()
+         self.bgRoad.layer.removeAllAnimations()
+         */
     }
     
     func createBeeEnemy() {
@@ -584,6 +596,7 @@ class ViewController: UIViewController, subviewDelegate {
             }
             }
         
+        collisionBehavior.addBoundary(withIdentifier: "road" as NSCopying, for: UIBezierPath(rect: bgRoad.frame))
 
         
     }
@@ -618,9 +631,11 @@ class ViewController: UIViewController, subviewDelegate {
     
     
     func removeAllEnemies() {
+        if(beeEnemyArray.count > 0){
         for i in 0...beeEnemyArray.count-1
-        {
-            beeEnemyArray[i].removeFromSuperview()
+            {
+                beeEnemyArray[i].removeFromSuperview()
+            }
         }
         beeEnemyArray.removeAll()
     }
@@ -696,7 +711,7 @@ class ViewController: UIViewController, subviewDelegate {
     
     
     func removeAllCoins(){
-        if(coinArray.count-1 > 0){
+        if(coinArray.count > 0){
             for i in 0...coinArray.count-1
             {
                 coinArray[i].removeFromSuperview()
@@ -769,8 +784,8 @@ class ViewController: UIViewController, subviewDelegate {
         //Add main avatar as a boundary
         //collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
         
-        print("bird:")
-        print(bird.frame)
+        //print("bird:")
+        //print(bird.frame)
         
         //dynamicAnimator.addBehavior(collisionBehavior)
         
