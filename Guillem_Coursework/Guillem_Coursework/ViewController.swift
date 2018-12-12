@@ -50,6 +50,9 @@ class ViewController: UIViewController, subviewDelegate {
     
     var gameEnded = false
     
+    var execution = 0
+    var nexecutions = 0
+    
     var score = 0
     
     var collisionProtection = false     //var to protect bird from collisions
@@ -85,7 +88,12 @@ class ViewController: UIViewController, subviewDelegate {
     }
     
     
+    
+    
     @IBOutlet weak var startViewMountains: UIImageView!
+    
+    
+    @IBOutlet weak var highScoreLabel: UILabel!
     
     
     
@@ -98,10 +106,20 @@ class ViewController: UIViewController, subviewDelegate {
     var blueCoinsActive = false
     
     
+    
+    
+    
+    
     func startGame(){
         gameEnded = false
+        
+        nexecutions += 1
+        execution = nexecutions
+        
         blueCoinsActive = false
         
+        self.blueCoinView.frame = (CGRect(x:-100, y:-100, width:0, height:0))
+        print(self.blueCoinView.frame)
         
         score = 0
         scoreLabel.text = String(score)
@@ -267,7 +285,7 @@ class ViewController: UIViewController, subviewDelegate {
                 numberOfCoins = 0
             }
             
-            for var j in 0...numberOfCoins {
+            for j in 0...numberOfCoins {
                 //print(self.coinArray.count)
                 if(j < self.coinArray.count && self.bird.frame.intersects(self.coinArray[j].frame))
                 {
@@ -354,12 +372,12 @@ class ViewController: UIViewController, subviewDelegate {
         
         self.finishView.isHidden = true
         //animateBackground()
-        var items = dynamicItemBehavior.items
+        let items = dynamicItemBehavior.items
         for i in items {
             dynamicItemBehavior.removeItem(i)
         }
         
-        var coins = dynamicCoinsBehavior.items
+        let coins = dynamicCoinsBehavior.items
         for i in coins {
             dynamicCoinsBehavior.removeItem(i)
         }
@@ -429,7 +447,7 @@ class ViewController: UIViewController, subviewDelegate {
         
         bird.myDelegate = self
         
-        UIView.animate(withDuration: 110, delay: 0, options: [.curveLinear, .repeat], animations: {self.startViewMountains.center.x -= self.view.bounds.width - 80
+        UIView.animate(withDuration: 110, delay: 0, options: [.curveLinear, .repeat, .autoreverse], animations: {self.startViewMountains.center.x -= self.view.bounds.width - 250
         })
         
         view.bringSubview(toFront: startView)
@@ -471,11 +489,11 @@ class ViewController: UIViewController, subviewDelegate {
         
         UIView.animate(withDuration: 110, delay: 0, options: [.curveLinear, .repeat], animations: {self.bgClouds.center.x -= self.view.bounds.width})
         
-        UIView.animate(withDuration: 55, delay: 0, options: [.curveLinear, .repeat], animations: {self.bgMountains1.center.x -= self.view.bounds.width})
+        UIView.animate(withDuration: 55, delay: 0, options: [.curveLinear, .repeat], animations: {self.bgMountains1.center.x -= self.view.bounds.width - 50})
         
-        UIView.animate(withDuration: 45, delay: 0, options: [.curveLinear, .repeat], animations: {self.bgMountains2.center.x -= self.view.bounds.width})
+        UIView.animate(withDuration: 45, delay: 0, options: [.curveLinear, .repeat], animations: {self.bgMountains2.center.x -= self.view.bounds.width - 50})
         
-        UIView.animate(withDuration: 15, delay: 0, options: [.curveLinear, .repeat], animations: {self.bgRoad.center.x -= self.view.bounds.width}, completion: nil)
+        UIView.animate(withDuration: 11, delay: 0, options: [.curveLinear, .repeat], animations: {self.bgRoad.center.x -= self.view.bounds.width}, completion: nil)
 
         
     }
@@ -483,9 +501,9 @@ class ViewController: UIViewController, subviewDelegate {
     var firsttime = true
     
     func startTimer(){
-        var timer = Timer()
         
         self.timerLabel.text = String(20)
+        
         
         for i in 1...20{
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(i)) {
@@ -502,15 +520,25 @@ class ViewController: UIViewController, subviewDelegate {
     func timeIsUp() {
         print("TIME'S UP!")
         self.finalScoreLabel.text = String(self.score)
+        
+        let defaults = UserDefaults.standard
+        var highscore = defaults.integer(forKey: "highscore")
+        if(self.score > highscore){
+            highscore = self.score
+            defaults.set(highscore, forKey: "highscore")
+        }
+        self.highScoreLabel.text = "High score: " + String(highscore)
+        
+        
         self.finishView.isHidden = false
         self.view.bringSubview(toFront: self.finishView)
         self.removeAllEnemies()
         self.removeAllCoins()
         self.ambientMusic?.setVolume(1, fadeDuration: 1)
         self.gameEnded = true
-        blueCoinView.frame = CGRect.zero
+        self.blueCoinView.frame = CGRect.zero
         if(self.firsttime){
-            UIView.animate(withDuration: 45, delay: 0, options: [.curveLinear, .repeat], animations: {self.finishViewMountains.center.x -= self.view.bounds.width-80})
+            UIView.animate(withDuration: 45, delay: 0, options: [.curveLinear, .repeat, .autoreverse], animations: {self.finishViewMountains.center.x -= self.view.bounds.width-250})
             self.firsttime = false   //45  / self.view.bounds.width-80
         }
         else{
@@ -527,7 +555,7 @@ class ViewController: UIViewController, subviewDelegate {
     }
     
     func createBeeEnemy() {
-        var beeView = UIImageView(image: nil)
+        let beeView = UIImageView(image: nil)
         
         //Assign an array of images to the image view
         var beeArray: [UIImage]!
@@ -560,8 +588,6 @@ class ViewController: UIViewController, subviewDelegate {
         
         dynamicItemBehavior.addItem(beeView)
         
-        let upperValue = -110
-        let lowerValue = -90
         let velx = -1 * (Int(arc4random_uniform(90) + 110))
         //let velx = upperValue
         
@@ -582,8 +608,6 @@ class ViewController: UIViewController, subviewDelegate {
          
          }*/
         
-        
-        let index = beeEnemyArray.count - 1
         beeEnemyArray.append(beeView)
         
         
@@ -608,7 +632,7 @@ class ViewController: UIViewController, subviewDelegate {
         
         for i in 1...15{
             if(!firstbee){
-                secs = Int(arc4random_uniform(3)+1)
+                secs = Int(arc4random_uniform(2)+1)
                 
             }
             else{
@@ -642,7 +666,7 @@ class ViewController: UIViewController, subviewDelegate {
     
     
     func createCoin() {
-        var coinView = UIImageView(image: nil)
+        let coinView = UIImageView(image: nil)
         
         
         if(!blueCoinsActive){
@@ -663,10 +687,8 @@ class ViewController: UIViewController, subviewDelegate {
         self.view.addSubview(coinView)
         
         dynamicCoinsBehavior.addItem(coinView)
-        
-        let upperValue = -110
-        let lowerValue = -90
-        let velx = -1 * (Int(arc4random_uniform(90) + 110))
+       
+        let velx = -90
 
         dynamicCoinsBehavior.addLinearVelocity(CGPoint(x:velx, y:0), for: coinView)
         
@@ -689,7 +711,7 @@ class ViewController: UIViewController, subviewDelegate {
         
         for i in 1...15{
             if(!firstcoin){
-                secsCoin = Int(arc4random_uniform(3)+1)
+                secsCoin = Int(arc4random_uniform(2)+1)
                 
             }
             else{
@@ -751,8 +773,6 @@ class ViewController: UIViewController, subviewDelegate {
             
             self.dynamicBlueCoinBehavior.addItem(self.blueCoinView)
             
-            let upperValue = -110
-            let lowerValue = -90
             let velx = -1 * (Int(arc4random_uniform(140) + 180))
             
             self.dynamicBlueCoinBehavior.addLinearVelocity(CGPoint(x:velx, y:0), for: self.blueCoinView)
