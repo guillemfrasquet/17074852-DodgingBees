@@ -119,7 +119,6 @@ class ViewController: UIViewController, subviewDelegate {
         blueCoinsActive = false
         
         self.blueCoinView.frame = (CGRect(x:-100, y:-100, width:0, height:0))
-        print(self.blueCoinView.frame)
         
         score = 0
         scoreLabel.text = String(score)
@@ -200,14 +199,7 @@ class ViewController: UIViewController, subviewDelegate {
         collisionBlueCoinBehavior.addBoundary(withIdentifier: "road" as NSCopying, for: UIBezierPath(rect: bgRoad.frame))
         
 
-        //collisionBehavior.collisionMode = UICollisionBehavior.Mode.boundaries
-        
-        
-        /*collisionBehavior.action = {
-         self.score -= 10
-         self.scoreLabel.text = String(self.score)
-         }*/
-        
+        collisionBehavior.collisionMode = UICollisionBehavior.Mode.boundaries
         
         
         createEnemies()
@@ -355,7 +347,6 @@ class ViewController: UIViewController, subviewDelegate {
                         self.coinArray[i].image = UIImage.animatedImage(with: self.blueCoinImageArray,duration: 0.7)
                     }
                 }
-                //print("BLUE COIN")
                 
             }
         }
@@ -368,10 +359,8 @@ class ViewController: UIViewController, subviewDelegate {
     
     
     @IBAction func restartButton(_ sender: UIButton) {
-        //beeEnemyArray.removeAll()
         
         self.finishView.isHidden = true
-        //animateBackground()
         let items = dynamicItemBehavior.items
         for i in items {
             dynamicItemBehavior.removeItem(i)
@@ -382,25 +371,10 @@ class ViewController: UIViewController, subviewDelegate {
             dynamicCoinsBehavior.removeItem(i)
         }
         
-        /*for i in 0...beeEnemyArray.count-1 {
-            beeEnemyArray[i].removeFromSuperview()
-            
-        }*/
+    
         beeEnemyArray.removeAll()
         coinArray.removeAll()
         self.finishViewMountains.stopAnimating()
-        
-        
-        /*
-        startTimer()
-        
-        createEnemies()
-        createCoins()
-        //setCollisions()
-        
- */
-        
-        
         
         startGame()
         
@@ -434,7 +408,6 @@ class ViewController: UIViewController, subviewDelegate {
     
     func changeSomething() {
         collisionBehavior.removeAllBoundaries()
-        //collisionBehavior.translatesReferenceBoundsIntoBoundary = true
         collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
     }
    
@@ -453,7 +426,6 @@ class ViewController: UIViewController, subviewDelegate {
         view.bringSubview(toFront: startView)
         
         finishView.isHidden = true
-        //finishView.isHidden = false
         howToPlayView.isHidden = true
         
         animateBackground()
@@ -472,17 +444,11 @@ class ViewController: UIViewController, subviewDelegate {
         catch{
             // couldn't load file :(
         }
-        
-
-        
-        ///////////
-        
     }
     
     
     func animateBackground(){
         UIView.animate(withDuration: 60, /*options: [.repeat],*/animations: {
-            //UIView.setAnimationRepeatCount(10)
             self.bgSun.center.x -= self.view.bounds.width}, completion: nil)
         
         UIView.animate(withDuration: 3, delay: 0, options: [UIViewAnimationOptions.curveLinear, .repeat, .autoreverse],  animations:  {self.bgSun.alpha=0.8},completion:nil)
@@ -508,7 +474,6 @@ class ViewController: UIViewController, subviewDelegate {
         for i in 1...20{
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(i)) {
                 self.timerLabel.text = String(20-i)
-                //print("Time: " + String(20-i))
             }
         }
         
@@ -544,14 +509,7 @@ class ViewController: UIViewController, subviewDelegate {
         else{
             self.finishViewMountains.startAnimating()
         }
-        
-        /*
-         self.bgSun.layer.removeAllAnimations()
-         self.bgClouds.layer.removeAllAnimations()
-         self.bgMountains1.layer.removeAllAnimations()
-         self.bgMountains2.layer.removeAllAnimations()
-         self.bgRoad.layer.removeAllAnimations()
-         */
+
     }
     
     func createBeeEnemy() {
@@ -569,52 +527,36 @@ class ViewController: UIViewController, subviewDelegate {
         ]
         
         beeView.image = UIImage.animatedImage(with: beeArray,duration: 0.4)
-        //beeView.image = UIImage(named: "bee1.png")
         
         //Assign the size and position of the image view
         let screenSize = UIScreen.main.bounds
         let xpos = screenSize.width;
         let ypos = arc4random_uniform(UInt32(screenSize.height - 100));
-        //ypos = UInt32(screenSize.height/2-50) //to test collision with the initial position of the bird
         beeView.frame = CGRect(x:xpos, y: CGFloat(ypos), width: 60, height: 50)
         
-        /*UIView.animate(withDuration: Double(arc4random_uniform(13) + 7), delay: TimeInterval(delay), options: [.curveLinear], animations: {
-         beeView.center.x -= self.view.bounds.width + 60}, completion: nil)*/
-        
-        
-        
-        //dynamicItemBehavior = UIDynamicItemBehavior(items: [beeView])
         self.view.addSubview(beeView)
         
         dynamicItemBehavior.addItem(beeView)
         
         let velx = -1 * (Int(arc4random_uniform(90) + 110))
-        //let velx = upperValue
         
         dynamicItemBehavior.addLinearVelocity(CGPoint(x:velx, y:0), for: beeView)
         
         
         
         collisionBehavior.addItem(beeView)
-        
-        //collisionBehavior.collisionMode
-        
-        /*collisionBehavior.action = {
-         if(self.bird.frame.intersects(beeView.frame))
-         {
-         self.score -= 10
-         self.scoreLabel.text = String(self.score)
-         }
-         
-         }*/
-        
+       
         beeEnemyArray.append(beeView)
         
         
+        self.view.bringSubview(toFront: timerLabel) //be sure that new bee won't hide the timer
+        self.view.bringSubview(toFront: self.scoreLabel)
+
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) {
             // Your code for actions when the time is up
-            UIView.animate(withDuration: 0.5, delay: 0, options: [UIViewAnimationOptions.curveEaseOut],  animations:  {beeView.alpha=0},completion:nil)
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1/2)) {
+            UIView.animate(withDuration: 1, delay: 0, options: [UIViewAnimationOptions.curveEaseOut],  animations:  {beeView.alpha=0},completion:nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
                 beeView.removeFromSuperview()
                 beeView.frame = CGRect.zero
             }
@@ -667,7 +609,7 @@ class ViewController: UIViewController, subviewDelegate {
     
     func createCoin() {
         let coinView = UIImageView(image: nil)
-        
+    
         
         if(!blueCoinsActive){
             coinView.image = UIImage.animatedImage(with: coinImageArray,duration: 0.7)
@@ -695,6 +637,10 @@ class ViewController: UIViewController, subviewDelegate {
         
         
         collisionCoinsBehavior.addItem(coinView)
+        
+        self.view.bringSubview(toFront: self.timerLabel) //be sure that new coin won't hide the timer
+        self.view.bringSubview(toFront: self.scoreLabel)
+
         
         //collisionBehavior.collisionMode = bird
 
@@ -767,55 +713,29 @@ class ViewController: UIViewController, subviewDelegate {
             let xpos = screenSize.width;
             let ypos = arc4random_uniform(UInt32(screenSize.height - 100));
             
-            self.blueCoinView.frame = CGRect(x:xpos, y: CGFloat(ypos), width: 60, height: 60)
+            self.blueCoinView.frame = CGRect(x:xpos, y: CGFloat(ypos), width: 60.0, height: 60.0)
             
             self.view.addSubview(self.blueCoinView)
+            print(self.blueCoinView.frame)
+
             
             self.dynamicBlueCoinBehavior.addItem(self.blueCoinView)
             
             let velx = -1 * (Int(arc4random_uniform(140) + 180))
             
             self.dynamicBlueCoinBehavior.addLinearVelocity(CGPoint(x:velx, y:0), for: self.blueCoinView)
-            
-            
-            
+
             self.collisionBlueCoinBehavior.addItem(self.blueCoinView)
+            
+            self.view.bringSubview(toFront: self.timerLabel) //be sure that new coin won't hide the timer
+            self.view.bringSubview(toFront: self.scoreLabel)
+            
+            print(self.blueCoinView.frame)
         }
         
     }
     
-    
-    
-    
-    
-    
-    
-    
-    func setCollisions(){
-        //dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
-        
-        //collisionBehavior = UICollisionBehavior(items: [/*bird,*/ beeEnemyArray[0]])
-        collisionBehavior.translatesReferenceBoundsIntoBoundary = true
-        
-        /*for i in 0...14{
-         collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: beeEnemyArray[i].frame))
-         }*/
-        
-        //Add main avatar as a boundary
-        //collisionBehavior.addBoundary(withIdentifier: "obstacle" as NSCopying, for: UIBezierPath(rect: bird.frame))
-        
-        //print("bird:")
-        //print(bird.frame)
-        
-        //dynamicAnimator.addBehavior(collisionBehavior)
-        
-        
-        /*collisionBehavior.action = {
-            self.score -= 10
-            self.scoreLabel.text = String(self.score)
-        }*/
-    }
-
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -825,34 +745,10 @@ class ViewController: UIViewController, subviewDelegate {
     
     func setBirdOrigin() {
         bird.frame.origin.x = 20
-        bird.frame.origin.y = 163
+        bird.frame.origin.y = self.view.bounds.height / 2 - 20
+        
     }
-    
-    
-
 
 }
 
-/*
-class CountDownViewController: UIViewController{
-    var timer = Timer()
-    var timeRemaining = 20
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        func timerRunning() {
-            timeRemaining -= 1
-            
-            timeLabel.text = timeRemaining
-            manageTimerEnd(seconds: timeRemaining)
-        }
-        
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerRunning), userInfo: nil, repeats: true)
-        
-        
-    }
-}
- */
+
