@@ -1,9 +1,11 @@
 //
 //  ViewController.swift
 //  Guillem_Coursework
+//  "DODGING BEES"
 //
 //  Created by gf18aak on 05/11/2018.
-//  Copyright © 2018 Guillem Frasquet. All rights reserved.
+//  Copyright © 2018 Guillem Frasquet Canet. All rights reserved.
+//  Student ID: 17074852
 //
 
 import UIKit
@@ -164,9 +166,6 @@ class ViewController: UIViewController, subviewDelegate {
         bgRoad.startAnimating()
  
         
- 
-        //animateBackground()
-        
         bird.image = UIImage.animatedImage(with: birdArray,duration: 0.5)
         
         
@@ -199,7 +198,8 @@ class ViewController: UIViewController, subviewDelegate {
         collisionBlueCoinBehavior.addBoundary(withIdentifier: "road" as NSCopying, for: UIBezierPath(rect: bgRoad.frame))
         
 
-        collisionBehavior.collisionMode = UICollisionBehavior.Mode.boundaries
+        // PLEASE DISABLE THE NEXT LINE IF THE PROJECT DOESN'T RUN PROPERLY
+        //collisionBehavior.collisionMode = UICollisionBehavior.Mode.boundaries
         
         
         createEnemies()
@@ -228,7 +228,6 @@ class ViewController: UIViewController, subviewDelegate {
                         
                         
                         UIView.animate(withDuration: 0.2, delay: 0, options: [UIViewAnimationOptions.curveLinear, .repeat, .autoreverse],  animations:  {self.beeEnemyArray[i].alpha=0},completion:nil)
-                        //self.beeEnemyArray[i].frame = CGRect.zero
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
                             if(i < self.beeEnemyArray.count){   //to avoid error if beeenemyArray has been emptied during the second of waiting -case time's up-
@@ -278,7 +277,6 @@ class ViewController: UIViewController, subviewDelegate {
             }
             
             for j in 0...numberOfCoins {
-                //print(self.coinArray.count)
                 if(j < self.coinArray.count && self.bird.frame.intersects(self.coinArray[j].frame))
                 {
                     if(!self.blueCoinsActive){
@@ -310,7 +308,7 @@ class ViewController: UIViewController, subviewDelegate {
                     }
                 }
             }
-            ///////////////////!!!!!!!!!!!!!!!! FATAL ERROR IF 2 COINS COLLECTED AT THE SAME TIME!!!!!!!
+
             if(toRemove.count > 0){
                 for k in 0...toRemove.count-1{
                     if(toRemove.count > 0){
@@ -483,7 +481,6 @@ class ViewController: UIViewController, subviewDelegate {
     }
     
     func timeIsUp() {
-        print("TIME'S UP!")
         self.finalScoreLabel.text = String(self.score)
         
         let defaults = UserDefaults.standard
@@ -504,7 +501,7 @@ class ViewController: UIViewController, subviewDelegate {
         self.blueCoinView.frame = CGRect.zero
         if(self.firsttime){
             UIView.animate(withDuration: 45, delay: 0, options: [.curveLinear, .repeat, .autoreverse], animations: {self.finishViewMountains.center.x -= self.view.bounds.width-250})
-            self.firsttime = false   //45  / self.view.bounds.width-80
+            self.firsttime = false
         }
         else{
             self.finishViewMountains.startAnimating()
@@ -642,9 +639,6 @@ class ViewController: UIViewController, subviewDelegate {
         self.view.bringSubview(toFront: self.scoreLabel)
 
         
-        //collisionBehavior.collisionMode = bird
-
-        
         coinArray.append(coinView)
         
         
@@ -716,7 +710,6 @@ class ViewController: UIViewController, subviewDelegate {
             self.blueCoinView.frame = CGRect(x:xpos, y: CGFloat(ypos), width: 60.0, height: 60.0)
             
             self.view.addSubview(self.blueCoinView)
-            print(self.blueCoinView.frame)
 
             
             self.dynamicBlueCoinBehavior.addItem(self.blueCoinView)
@@ -729,8 +722,6 @@ class ViewController: UIViewController, subviewDelegate {
             
             self.view.bringSubview(toFront: self.timerLabel) //be sure that new coin won't hide the timer
             self.view.bringSubview(toFront: self.scoreLabel)
-            
-            print(self.blueCoinView.frame)
         }
         
     }
